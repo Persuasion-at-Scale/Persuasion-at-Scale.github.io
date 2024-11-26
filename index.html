@@ -1,0 +1,120 @@
+import React from 'react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+import { Book, Users, Calendar, Award } from 'lucide-react';
+
+export default function CourseWebsite() {
+  return (
+    <div className="max-w-5xl mx-auto p-6 space-y-8">
+      {/* Header */}
+      <div className="space-y-4">
+        <h1 className="text-4xl font-bold">Persuasion at Scale</h1>
+        <h2 className="text-xl text-gray-600">
+          Causal Inference, Machine Learning, and Evidence-Based Understanding of the Information Environment
+        </h2>
+        <div className="flex items-center space-x-4 text-gray-600">
+          <span className="flex items-center">
+            <Calendar className="w-5 h-5 mr-2" />
+            Spring 2025
+          </span>
+          <span>PSAM3707</span>
+        </div>
+      </div>
+
+      {/* Instructors */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center">
+            <Users className="w-5 h-5 mr-2" />
+            Instructors
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-3">
+            <img 
+              src="/api/placeholder/300/300" 
+              alt="Professor Kim"
+              className="rounded-lg w-full object-cover"
+            />
+            <div>
+              <h3 className="font-semibold">Eunji Kim</h3>
+              <p className="text-gray-600">Assistant Professor of Political Science</p>
+              <p className="text-sm text-gray-500">School of Arts and Sciences</p>
+            </div>
+          </div>
+          <div className="space-y-3">
+            <img 
+              src="/api/placeholder/300/300" 
+              alt="Professor Wiggins"
+              className="rounded-lg w-full object-cover"
+            />
+            <div>
+              <h3 className="font-semibold">Christopher Wiggins</h3>
+              <p className="text-gray-600">Associate Professor of Applied Mathematics</p>
+              <p className="text-sm text-gray-500">Fu Foundation School of Engineering</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Course Overview */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center">
+            <Book className="w-5 h-5 mr-2" />
+            Course Overview
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p>
+            This cross-disciplinary course explores the multifaceted nature of persuasion in the modern world, 
+            bridging political science, communication, journalism, marketing, and public health. The course combines 
+            rich theories of communication with practical, hands-on analysis.
+          </p>
+          <p>
+            Students will engage with real-world data using statistical and computational methods, including:
+          </p>
+          <ul className="list-disc pl-6 space-y-2">
+            <li>Randomized controlled trials</li>
+            <li>Natural experiments</li>
+            <li>Machine learning techniques</li>
+            <li>Causal inference methods</li>
+          </ul>
+        </CardContent>
+      </Card>
+
+      {/* Assignments */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center">
+            <Award className="w-5 h-5 mr-2" />
+            Course Requirements
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <h3 className="font-semibold">Four Short Assignments (70%)</h3>
+            <ol className="list-decimal pl-6 space-y-4">
+              <li>
+                <p className="font-medium">Comparison of Self-Reported Media Consumption and Behavioral Data</p>
+                <p className="text-gray-600">Analysis of personal media consumption patterns using self-assessment and behavioral data</p>
+              </li>
+              <li>
+                <p className="font-medium">Analyzing Web-Tracking Data</p>
+                <p className="text-gray-600">Application of causal inference techniques to web tracking data</p>
+              </li>
+              <li>
+                <p className="font-medium">Extension of Experimental Data</p>
+                <p className="text-gray-600">Replication and extension analysis using Time-sharing Experiments for the Social Sciences</p>
+              </li>
+              <li>
+                <p className="font-medium">Design Your Own Persuasion Experiment</p>
+                <p className="text-gray-600">Creation and evaluation of original media content for behavioral influence</p>
+              </li>
+            </ol>
+            <p className="mt-4">Final exam will constitute the remaining 30% of the grade.</p>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
