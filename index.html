@@ -1,120 +1,180 @@
-import React from 'react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Book, Users, Calendar, Award } from 'lucide-react';
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Persuasion at Scale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: #333;
+        }
 
-export default function CourseWebsite() {
-  return (
-    <div className="max-w-5xl mx-auto p-6 space-y-8">
-      {/* Header */}
-      <div className="space-y-4">
-        <h1 className="text-4xl font-bold">Persuasion at Scale</h1>
-        <h2 className="text-xl text-gray-600">
-          Causal Inference, Machine Learning, and Evidence-Based Understanding of the Information Environment
-        </h2>
-        <div className="flex items-center space-x-4 text-gray-600">
-          <span className="flex items-center">
-            <Calendar className="w-5 h-5 mr-2" />
-            Spring 2025
-          </span>
-          <span>PSAM3707</span>
+        .card {
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #111;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: #666;
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .instructor img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .instructor h3 {
+            margin: 0.5rem 0;
+            color: #111;
+        }
+
+        .instructor p {
+            margin: 0.25rem 0;
+            color: #666;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 1rem;
+            color: #666;
+            align-items: center;
+        }
+
+        .course-meta i {
+            margin-right: 0.5rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+
+        .card-title i {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>Persuasion at Scale</h1>
+        <h2>Causal Inference, Machine Learning, and Evidence-Based Understanding of the Information Environment</h2>
+        <div class="course-meta">
+            <span><i class="far fa-calendar"></i>Spring 2025</span>
+            <span>PSAM3707</span>
         </div>
-      </div>
+    </header>
 
-      {/* Instructors */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            <Users className="w-5 h-5 mr-2" />
+    <!-- Instructors -->
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-users"></i>
             Instructors
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-3">
-            <img 
-              src="/api/placeholder/300/300" 
-              alt="Professor Kim"
-              className="rounded-lg w-full object-cover"
-            />
-            <div>
-              <h3 className="font-semibold">Eunji Kim</h3>
-              <p className="text-gray-600">Assistant Professor of Political Science</p>
-              <p className="text-sm text-gray-500">School of Arts and Sciences</p>
+        </div>
+        <div class="instructors-grid">
+            <div class="instructor">
+                <img src="https://via.placeholder.com/300" alt="Professor Kim">
+                <h3>Eunji Kim</h3>
+                <p>Assistant Professor of Political Science</p>
+                <p>School of Arts and Sciences</p>
             </div>
-          </div>
-          <div className="space-y-3">
-            <img 
-              src="/api/placeholder/300/300" 
-              alt="Professor Wiggins"
-              className="rounded-lg w-full object-cover"
-            />
-            <div>
-              <h3 className="font-semibold">Christopher Wiggins</h3>
-              <p className="text-gray-600">Associate Professor of Applied Mathematics</p>
-              <p className="text-sm text-gray-500">Fu Foundation School of Engineering</p>
+            <div class="instructor">
+                <img src="https://via.placeholder.com/300" alt="Professor Wiggins">
+                <h3>Christopher Wiggins</h3>
+                <p>Associate Professor of Applied Mathematics</p>
+                <p>Fu Foundation School of Engineering</p>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+        </div>
+    </div>
 
-      {/* Course Overview */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            <Book className="w-5 h-5 mr-2" />
+    <!-- Course Overview -->
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-book"></i>
             Course Overview
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <p>
-            This cross-disciplinary course explores the multifaceted nature of persuasion in the modern world, 
-            bridging political science, communication, journalism, marketing, and public health. The course combines 
-            rich theories of communication with practical, hands-on analysis.
-          </p>
-          <p>
-            Students will engage with real-world data using statistical and computational methods, including:
-          </p>
-          <ul className="list-disc pl-6 space-y-2">
+        </div>
+        <p>This cross-disciplinary course explores the multifaceted nature of persuasion in the modern world, 
+        bridging political science, communication, journalism, marketing, and public health. The course combines 
+        rich theories of communication with practical, hands-on analysis.</p>
+        
+        <p>Students will engage with real-world data using statistical and computational methods, including:</p>
+        <ul>
             <li>Randomized controlled trials</li>
             <li>Natural experiments</li>
             <li>Machine learning techniques</li>
             <li>Causal inference methods</li>
-          </ul>
-        </CardContent>
-      </Card>
-
-      {/* Assignments */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center">
-            <Award className="w-5 h-5 mr-2" />
-            Course Requirements
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <h3 className="font-semibold">Four Short Assignments (70%)</h3>
-            <ol className="list-decimal pl-6 space-y-4">
-              <li>
-                <p className="font-medium">Comparison of Self-Reported Media Consumption and Behavioral Data</p>
-                <p className="text-gray-600">Analysis of personal media consumption patterns using self-assessment and behavioral data</p>
-              </li>
-              <li>
-                <p className="font-medium">Analyzing Web-Tracking Data</p>
-                <p className="text-gray-600">Application of causal inference techniques to web tracking data</p>
-              </li>
-              <li>
-                <p className="font-medium">Extension of Experimental Data</p>
-                <p className="text-gray-600">Replication and extension analysis using Time-sharing Experiments for the Social Sciences</p>
-              </li>
-              <li>
-                <p className="font-medium">Design Your Own Persuasion Experiment</p>
-                <p className="text-gray-600">Creation and evaluation of original media content for behavioral influence</p>
-              </li>
-            </ol>
-            <p className="mt-4">Final exam will constitute the remaining 30% of the grade.</p>
-          </div>
-        </CardContent>
-      </Card>
+        </ul>
     </div>
-  );
-}
+
+    <!-- Assignments -->
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-award"></i>
+            Course Requirements
+        </div>
+        <h3>Four Short Assignments (70%)</h3>
+        <ol>
+            <li>
+                <strong>Comparison of Self-Reported Media Consumption and Behavioral Data</strong>
+                <p>Analysis of personal media consumption patterns using self-assessment and behavioral data</p>
+            </li>
+            <li>
+                <strong>Analyzing Web-Tracking Data</strong>
+                <p>Application of causal inference techniques to web tracking data</p>
+            </li>
+            <li>
+                <strong>Extension of Experimental Data</strong>
+                <p>Replication and extension analysis using Time-sharing Experiments for the Social Sciences</p>
+            </li>
+            <li>
+                <strong>Design Your Own Persuasion Experiment</strong>
+                <p>Creation and evaluation of original media content for behavioral influence</p>
+            </li>
+        </ol>
+        <p>Final exam will constitute the remaining 30% of the grade.</p>
+    </div>
+</body>
+</html>
