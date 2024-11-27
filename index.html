@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Persuasion at Scale</title>
+    <meta name="description" content="Persuasion at Scale: A cross-disciplinary course exploring modern persuasion through data science and political science at Columbia University">
+    <title>Persuasion at Scale | Columbia University</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
@@ -95,6 +96,58 @@
         .card-title i {
             margin-right: 0.5rem;
         }
+
+        .news-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .news-list li {
+            margin-bottom: 1.5rem;
+        }
+
+        .news-list a {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+            padding: 1rem;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            align-items: start;
+        }
+
+        .news-list a:hover {
+            background-color: #f6f8fa;
+        }
+
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+            grid-column: 1;
+        }
+
+        .news-title {
+            font-weight: 500;
+            color: #0366d6;
+            grid-column: 2;
+        }
+
+        .news-source {
+            color: #666;
+            font-size: 0.9rem;
+            grid-column: 2;
+        }
+
+        .link-icon {
+            font-size: 0.8rem;
+            color: #666;
+            grid-column: 3;
+            grid-row: 1;
+            margin-top: 0.3rem;
+        }
     </style>
 </head>
 <body>
@@ -107,6 +160,25 @@
             <span>PSAM3707</span>
         </div>
     </header>
+
+    <!-- Course Overview -->
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-book"></i>
+            Course Overview
+        </div>
+        <p>This cross-disciplinary course explores the multifaceted nature of persuasion in the modern world,
+        bridging political science, communication, journalism, marketing, and public health. The course combines
+        rich theories of communication with practical, hands-on analysis.</p>
+
+        <p>Students will engage with real-world data using statistical and computational methods, including:</p>
+        <ul>
+            <li>Randomized controlled trials</li>
+            <li>Natural experiments</li>
+            <li>Machine learning techniques</li>
+            <li>Causal inference methods</li>
+        </ul>
+    </div>
 
     <!-- Instructors -->
     <div class="card">
@@ -128,25 +200,6 @@
                 <p>Fu Foundation School of Engineering</p>
             </div>
         </div>
-    </div>
-
-    <!-- Course Overview -->
-    <div class="card">
-        <div class="card-title">
-            <i class="fas fa-book"></i>
-            Course Overview
-        </div>
-        <p>This cross-disciplinary course explores the multifaceted nature of persuasion in the modern world, 
-        bridging political science, communication, journalism, marketing, and public health. The course combines 
-        rich theories of communication with practical, hands-on analysis.</p>
-        
-        <p>Students will engage with real-world data using statistical and computational methods, including:</p>
-        <ul>
-            <li>Randomized controlled trials</li>
-            <li>Natural experiments</li>
-            <li>Machine learning techniques</li>
-            <li>Causal inference methods</li>
-        </ul>
     </div>
 
     <!-- Assignments -->
@@ -175,6 +228,33 @@
             </li>
         </ol>
         <p>Final exam will constitute the remaining 30% of the grade.</p>
+    </div>
+
+    <!-- News -->
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-newspaper"></i>
+            Recent News
+        </div>
+        <p>For more information about the class, please see these recent news items:</p>
+        <ul class="news-list">
+            <li>
+                <a href="https://www.columbiaspectator.com/news/2024/11/25/new-persuasion-at-scale-course-wins-2024-cross-disciplinary-frontiers-courses-award/" target="_blank">
+                    <span class="news-date">November 25, 2024</span>
+                    <span class="news-title">New Persuasion at Scale course wins 2024 Cross-Disciplinary Frontiers Courses award</span>
+                    <span class="news-source">Columbia Daily Spectator</span>
+                    <i class="fas fa-external-link-alt link-icon"></i>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.engineering.columbia.edu/about/news/how-does-information-ecosystem-influence-politics" target="_blank">
+                    <span class="news-date">November 22, 2024</span>
+                    <span class="news-title">How does the information ecosystem influence politics?</span>
+                    <span class="news-source">Columbia Engineering News</span>
+                    <i class="fas fa-external-link-alt link-icon"></i>
+                </a>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
