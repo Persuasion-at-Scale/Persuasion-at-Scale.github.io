@@ -5,11 +5,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Persuasion at Scale, a Columbia University course blending political science, data science, and media analysis. Lectures will cover RCTs, causal inference, and persuasion techniques." />
+    <meta name="keywords" content="persuasion, bandits, MAB, contextual bandits, P-values, backtesting, data science, political science, Columbia University, RCTs, causal inference, machine learning, media analysis, PSAM3707, Eunji Kim, Chris Wiggins, P@S, P@S@CU">
     <meta name="twitter:card" content="summary_large_image">
 I   <meta property="og:title" content="Persuasion at Scale | Columbia University">
     <meta property="og:description" content="A cross-disciplinary course at Columbia University exploring persuasion through data science and political science.">
     <meta property="og:image" content="images/persuasion_banner.webp">
     <meta property="og:url" content="https://yourwebsite.com">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Columbia University">
+    <meta name="twitter:site" content="@Columbia">
+
+    <!-- Add preload for critical assets -->
+    <link rel="preload" href="images/persuasion_banner.webp" as="image">
+    <link rel="preload" href="images/ek.webp" as="image">
+    <link rel="preload" href="images/cw.webp" as="image">
+
+    <!-- Add to Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
     <title>Persuasion at Scale | Columbia University | Political Science & Data Science</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -160,35 +174,65 @@ I   <meta property="og:title" content="Persuasion at Scale | Columbia University
     </style>
 
 
-  <script type="application/ld+json">
-  {
+<script type="application/ld+json">
+{
     "@context": "https://schema.org",
-    "@type": "Course",
-    "name": "Persuasion at Scale",
-    "description": "A cross-disciplinary course at Columbia University exploring modern persuasion through data science and political science.",
-    "provider": 
-    {
-      "@type": "EducationalOrganization",
-      "name": "Columbia University",
-      "url": "https://www.columbia.edu"
-    }
-  }
-  </script>
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Columbia University",
+        "item": "https://www.columbia.edu"
+    },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Political Science",
+        "item": "https://polisci.columbia.edu"
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Persuasion at Scale",
+        "item": "https://persuasion-at-scale.github.io/index.html"
+    }]
+}
+</script>
+
+
+<script type="application/ld+json">
+{
+    "@type": "CourseInstance",
+    "courseMode": "onsite",
+    "location": {
+        "@type": "Place",
+        "name": "313 Fayerweather",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "New York",
+            "addressRegion": "NY"
+        }
+    },
+    "instructor": [
+        {
+            "@type": "Person",
+            "name": "Eunji Kim",
+            "jobTitle": "Assistant Professor of Political Science",
+            "url": "https://www.eunjikim.pub/"
+        },
+        {
+            "@type": "Person",
+            "name": "Chris Wiggins",
+            "jobTitle": "Associate Professor of Applied Mathematics",
+            "url": "https://www.columbia.edu/~chw2/"
+        }
+    ]
+}
+</script>
 
 <link rel="canonical" href="https://persuasion-at-scale.github.io/index.html">
 
 
 </head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0B85Z9L2BZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0B85Z9L2BZ');
-</script>
 
 <!--Body-->
 
@@ -367,5 +411,24 @@ I   <meta property="og:title" content="Persuasion at Scale | Columbia University
             </li>
         </ul>
     </div>
+
+
+<footer>
+    <nav aria-label="Related Links">
+        <a href="https://polisci.columbia.edu">Columbia Political Science</a> |
+        <a href="https://www.columbia.edu/academics">Columbia Academics</a>
+    </nav>
+</footer>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0B85Z9L2BZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0B85Z9L2BZ');
+</script>
+
 </body>
 </html>
