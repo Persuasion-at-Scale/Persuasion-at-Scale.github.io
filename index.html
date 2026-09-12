@@ -1,605 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Persuasion at Scale, a Columbia University course blending political science, data science, and media analysis. Lectures will cover RCTs, causal inference, and persuasion techniques." />
-    <meta name="keywords" content="persuasion, bandits, MAB, contextual bandits, P-values, backtesting, data science, political science, Columbia University, RCTs, causal inference, machine learning, media analysis, PSAM3707, Eunji Kim, Chris Wiggins, P@S, P@S@CU">
-    <meta name="twitter:card" content="summary_large_image">
-   <meta property="og:title" content="Persuasion at Scale | Columbia University">
-    <meta property="og:description" content="A cross-disciplinary course at Columbia University exploring persuasion through data science and political science.">
-    <meta property="og:image" content="images/persuasion_banner.webp">
-    <meta property="og:url" content="https://persuasion-at-scale.github.io/index.html">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Persuasion at Scale | Columbia University | Political Science and Data Science</title>
+  <meta name="description" content="Persuasion at Scale is a Columbia University course by Eunji Kim and Chris Wiggins on how persuasion works at scale: randomized experiments, natural experiments, causal inference, machine learning and bandits, applied to media, campaigns and social platforms. Syllabus, notebooks, and news.">
+  <meta name="keywords" content="Persuasion at Scale, Columbia University, Eunji Kim, Chris Wiggins, political science, data science, causal inference, randomized controlled trials, natural experiments, machine learning, contextual bandits, Thompson sampling, A/B testing, media effects, PSAM UN3707, P@S">
+  <link rel="canonical" href="https://persuasion-at-scale.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Persuasion at Scale">
+  <meta property="og:title" content="Persuasion at Scale | Columbia University">
+  <meta property="og:description" content="A Columbia course on how persuasion works at scale: experiments, causal inference, machine learning and bandits, applied to media, campaigns and social platforms.">
+  <meta property="og:url" content="https://persuasion-at-scale.github.io/">
+  <meta property="og:image" content="https://persuasion-at-scale.github.io/images/persuasion_banner.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Columbia">
+  <meta name="theme-color" content="#f4efe6">
 
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Columbia University">
-    <meta name="twitter:site" content="@Columbia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
-    <!-- Add preload for critical assets -->
-    <link rel="preload" href="images/persuasion_banner.webp" as="image">
-    <link rel="preload" href="images/ek.webp" as="image">
-    <link rel="preload" href="images/cw.webp" as="image">
-
-    <!-- Add to Font Awesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-    <title>Persuasion at Scale | Columbia University | Political Science & Data Science</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            color: #333;
-        }
-
-        .card {
-            border: 1px solid #eaeaea;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            margin-bottom: 3rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #111;
-        }
-
-        h2 {
-            font-size: 1.25rem;
-            color: #666;
-            font-weight: normal;
-            margin-bottom: 1.5rem;
-        }
-
-        .instructors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Update the .instructor img rule so all images are a uniform size */
-        .instructor img {
-            width: 150px;           /* fixed width */
-            height: 150px;          /* fixed height to make them square */
-            object-fit: cover;      /* crop any overflow instead of stretching */
-            border-radius: 8px;     /* keep the corners rounded */
-            margin-bottom: 1rem;
-        }
-
-        .instructor h3 {
-            margin: 0.5rem 0;
-            color: #111;
-        }
-
-        .instructor p {
-            margin: 0.25rem 0;
-            color: #666;
-        }
-
-        .course-meta {
-            display: flex;
-            gap: 1rem;
-            color: #666;
-            align-items: center;
-        }
-
-        .course-meta i {
-            margin-right: 0.5rem;
-        }
-
-        ul, ol {
-            margin: 1rem 0;
-            padding-left: 2rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        .card-title {
-            display: flex;
-            align-items: center;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #111;
-        }
-
-        .card-title i {
-            margin-right: 0.5rem;
-        }
-
-        .news-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-        }
-
-        .news-list li {
-            margin-bottom: 1.5rem;
-        }
-
-        .news-list a {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 1rem;
-            text-decoration: none;
-            color: inherit;
-            padding: 1rem;
-            border-radius: 6px;
-            transition: background-color 0.2s;
-            align-items: start;
-        }
-
-        .news-list a:hover {
-            background-color: #f6f8fa;
-        }
-
-        .news-date {
-            color: #666;
-            font-size: 0.9rem;
-            grid-column: 1;
-        }
-
-        .news-title {
-            font-weight: 500;
-            color: #0366d6;
-            grid-column: 2;
-        }
-
-        .news-source {
-            color: #666;
-            font-size: 0.9rem;
-            grid-column: 2;
-        }
-
-        .link-icon {
-            font-size: 0.8rem;
-            color: #666;
-            grid-column: 3;
-            grid-row: 1;
-            margin-top: 0.3rem;
-        }
-    </style>
-
-
-<script type="application/ld+json">
-{
+  <script type="application/ld+json">
+  {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Columbia University",
-        "item": "https://www.columbia.edu"
-    },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Political Science",
-        "item": "https://polisci.columbia.edu"
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Persuasion at Scale",
-        "item": "https://persuasion-at-scale.github.io/index.html"
-    }]
-}
-</script>
-
-
-
-
-<script type="application/ld+json">
-{
-  "@type": "CourseInstance",
-  "courseMode": "onsite",
-  "location": {
-    "@type": "Place",
-    "name": "313 Fayerweather",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "New York",
-      "addressRegion": "NY"
-    }
-  },
-  "instructor": [
-    {
-      "@type": "Person",
-      "name": "Eunji Kim",
-      "jobTitle": "Assistant Professor of Political Science",
-      "url": "https://www.eunjikim.pub/"
-    },
-    {
-      "@type": "Person",
-      "name": "Chris Wiggins",
-      "jobTitle": "Associate Professor of Applied Mathematics",
-      "url": "https://www.columbia.edu/~chw2/"
-    }
-  ]
-}
-</script>
-
-<!-- 🔽 Add this right below -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Course",
-  "name": "Persuasion at Scale",
-  "description": "Columbia University course blending political science and data science to study persuasion through experiments, machine learning, and causal inference.",
-  "provider": {
-    "@type": "Organization",
-    "name": "Columbia University",
-    "sameAs": "https://www.columbia.edu"
+    "@type": "Course",
+    "name": "Persuasion at Scale",
+    "alternateName": ["P@S", "PSAM UN3707"],
+    "url": "https://persuasion-at-scale.github.io/",
+    "description": "A cross-disciplinary Columbia University course on persuasion in the information ecosystem: randomized controlled trials, natural experiments, causal inference, machine learning and bandit algorithms, applied to partisan media, social platforms and political campaigns.",
+    "courseCode": "PSAM UN3707",
+    "provider": {"@type": "CollegeOrUniversity", "name": "Columbia University", "sameAs": "https://www.columbia.edu"},
+    "sameAs": ["https://github.com/Persuasion-at-Scale", "https://www.college.columbia.edu/news/introducing-persuasion-scale", "https://scienceandsociety.columbia.edu/courses/un3707-persuasion-scale"],
+    "instructor": [
+      {"@type": "Person", "name": "Eunji Kim", "jobTitle": "Assistant Professor of Political Science", "url": "https://www.eunjikim.pub/"},
+      {"@type": "Person", "name": "Chris Wiggins", "jobTitle": "Associate Professor of Applied Mathematics", "url": "https://www.columbia.edu/~chw2/"}
+    ],
+    "hasCourseInstance": [
+      {"@type": "CourseInstance", "courseMode": "onsite", "name": "Spring 2026", "location": {"@type": "Place", "name": "Columbia University", "address": {"@type": "PostalAddress", "addressLocality": "New York", "addressRegion": "NY"}}},
+      {"@type": "CourseInstance", "courseMode": "onsite", "name": "Spring 2025", "location": {"@type": "Place", "name": "313 Fayerweather, Columbia University", "address": {"@type": "PostalAddress", "addressLocality": "New York", "addressRegion": "NY"}}}
+    ]
   }
-}
-</script>
-
-<link rel="canonical" href="https://persuasion-at-scale.github.io/index.html">
-
-
-</head>
-
-
-<!--Body-->
-
-<body>
-    <!-- Header -->
-    <header class="header">
-        <h1>Persuasion at Scale:</h1>
-        <h2> Causal Inference, Machine Learning, and Evidence-Based Understanding of the Information Environment</h2>
-        <div class="course-meta">
-            <span><i class="far fa-calendar"></i>Spring 2026, M/W 11.40-12.55</span>
-        </div>
-        <ol style="margin-top: 1.5rem; margin-bottom: 1.5rem;">
-            <li><a href="https://doc.sis.columbia.edu/#subj/PSAM/UN3707-20261-001/">Bulletin</a> (PSAM3707)</li>
-            <li><a href="https://www.notion.so/PSAM-3707-Persuasion-at-Scale-2ea6ebbeffac8038892be013322cd742">Notion</a> (for discussions)</li>
-            <li><a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">Syllabus</a> (final source of truth for all else including office hours)</li>
-        </ol>
-    </header>
-
-<!-- Course Overview -->
-<div class="card">
-
-    <div class="card-title">
-        <i class="fas fa-book"></i>
-        <h2>Course Overview: Understanding Persuasion in the Digital Age</h2>
-    </div>
-    <h3>Key Topics Covered</h3>
-
-
-    <p>This cross-disciplinary course explores the multifaceted nature of persuasion in the modern world,
-    bridging political science, communication, journalism, marketing, and public health. The course combines
-    rich theories of communication with practical, hands-on analysis.</p>
-
-    <p>Students will engage with real-world data using statistical and computational methods, including:</p>
-    <ul>
-        <li>Randomized controlled trials</li>
-        <li>Natural experiments</li>
-        <li>Machine learning techniques</li>
-        <li>Causal inference methods</li>
-    </ul>
-    <p>This course fulfills the quantitative methods requirement for the Political Science major.</p>
-
-    <p>For complete course details including call number, location, grading policies, and office hours, please see the <a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">syllabus</a>.</p>
-</div>
-
-    <!-- Instructors -->
-    <div class="card">
-        <div class="card-title">
-            <i class="fas fa-user-friends"></i>
-            Instructors
-        </div>
-        <div class="instructors-grid">
-            <div class="instructor">
-                <img src="images/ek.webp" alt="Professor Eunji Kim - Assistant Professor of Political Science at Columbia University" loading="lazy">
-                <h3><a href="https://www.eunjikim.pub/">Eunji Kim</a></h3>
-                <p>Assistant Professor of Political Science</p>
-                <p>School of Arts and Sciences</p>
-            </div>
-            <div class="instructor">
-                <img src="images/cw.webp" alt="Professor Chris Wiggins - Associate Professor of Applied Mathematics and Systems Biology at Columbia University" loading="lazy">
-                <h3><a href=""https://www.columbia.edu/~chw2/>Chris Wiggins</a></h3>
-                <p>Associate Professor of Applied Mathematics</p>
-                <p>Fu Foundation School of Engineering</p>
-            </div>
-        </div>
-    </div>
-
-
-
-<!-- Team -->
-<div class="card">
-    <div class="card-title">
-        <i class="fas fa-users"></i>
-        Teaching Team
-    </div>
-    <div class="instructors-grid" style="grid-template-columns: repeat(3, 1fr);">
-        <div class="instructor">
-            <img src="images/ae.webp" alt="Alec R. Ewig - Teaching Assistant" loading="lazy">
-            <h3>Alec R. Ewig</h3>
-            <p>PhD Student, Political Science</p>
-            <p style="color:#888; font-size:0.9em;">American Politics</p>
-        </div>
-        <div class="instructor">
-            <img src="images/cb.webp" alt="Carolina Bernal - Teaching Assistant" loading="lazy">
-            <h3>Carolina Bernal</h3>
-            <p>PhD Student, Political Science</p>
-            <p style="color:#888; font-size:0.9em;">Comparative Politics</p>
-        </div>
-        <div class="instructor">
-            <img src="images/eg.webp" alt="Elden Griggs - Teaching Assistant" loading="lazy">
-            <h3>Elden Griggs</h3>
-            <p>PhD Student, Political Science</p>
-            <p style="color:#888; font-size:0.9em;">International Relations</p>
-        </div>
-    </div>
-</div>
-
-<!-- News -->
-<div class="card">
-  <div class="card-title">
-    <i class="fas fa-newspaper"></i>
-    Recent News
-  </div>
-  <p>For more information about the class, please see these recent news items:</p>
-  <ul class="news-list">
-
-    <li>
-      <a href="https://news.columbia.edu/news/proposing-false-narrative-american-dream" target="_blank">
-        <span class="news-date">2025</span>
-        <span class="news-title">Proposing a False Narrative of the American Dream</span>
-        <span class="news-source">Columbia News</span>
-        <i class="fas fa-external-link-alt link-icon"></i>
-      </a>
-    </li>
-
-<li>
-      <a href="https://drive.google.com/file/d/1h9NI8b9k3yPVoDk75ptKbOM--GSInbzh/view?usp=sharing" target="_blank">
-        <span class="news-date">2025-06-26</span>
-        <span class="news-title">Persuasion at Scale: Machine Learning, Causality and the Information Ecosystem</span>
-        <span class="news-source">Columbia Data Science Institute Computational Social Science Working Group</span>
-        <i class="fas fa-external-link-alt link-icon"></i>
-      </a>
-    </li>
-
-    <li>
-      <a href="https://www.college.columbia.edu/news/introducing-persuasion-scale" target="_blank">
-        <span class="news-date">2025-02-19</span>
-        <span class="news-title">Introducing "Persuasion at Scale"</span>
-        <span class="news-source">Columbia College</span>
-        <i class="fas fa-external-link-alt link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.columbiaspectator.com/news/2024/11/25/new-persuasion-at-scale-course-wins-2024-cross-disciplinary-frontiers-courses-award/" target="_blank">
-        <span class="news-date">2024-11-25</span>
-        <span class="news-title">New Persuasion at Scale course wins 2024 Cross-Disciplinary Frontiers Courses award</span>
-        <span class="news-source">Columbia Daily Spectator</span>
-        <i class="fas fa-external-link-alt link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.engineering.columbia.edu/about/news/how-does-information-ecosystem-influence-politics" target="_blank">
-        <span class="news-date">2024-11-22</span>
-        <span class="news-title">How does the information ecosystem influence politics?</span>
-        <span class="news-source">Columbia Engineering News</span>
-        <i class="fas fa-external-link-alt link-icon"></i>
-      </a>
-    </li>
-  </ul>
-</div>
-
-    <!-- Course Requirements -->
-<div class="card">
-    <div class="card-title">
-        <i class="fas fa-award"></i>
-        Course Requirements
-    </div>
-    <p>Course grading will include homework assignments, a midterm exam, and a final exam. For the quantitative grading breakdown and late work policies, please see the <a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">syllabus</a>.</p>
-</div>
-
-
-
-
-
-<!-- Colab Notebooks -->
-<div class="card">
-  <div class="card-title">
-    <i class="fas fa-code"></i>
-    Course Colab Notebooks from 2025; 2026 TBA
-  </div>
-  <p>Interactive coding exercises and examples used in the 2025 course:</p>
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "What is Persuasion at Scale?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Persuasion at Scale is a Columbia University course taught by Eunji Kim (Political Science) and Chris Wiggins (Applied Mathematics) that uses randomized experiments, natural experiments, causal inference and machine learning to study how persuasion works in media, campaigns and social platforms."}
+    }, {
+      "@type": "Question",
+      "name": "Who can take Persuasion at Scale?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Columbia undergraduates; the course fulfills the quantitative methods requirement for the Political Science major and is listed as PSAM UN3707."}
+    }]
+  }
+  </script>
 
   <style>
-    .colab-list {
-      list-style: decimal;
-      padding-left: 2rem;
-      margin: 1.5rem 0;
+    :root {
+      --paper: #f4efe6;
+      --paper-2: #ebe4d6;
+      --ink: #14120f;
+      --ink-2: #4a453c;
+      --ink-3: #7a7365;
+      --rule: #cfc6b4;
+      --red: #c8321f;
+      --red-2: #a5271a;
+      --gold: #b8892b;
+      --card: #fbf8f2;
+      --shadow: 0 1px 0 rgba(20,18,15,.06), 0 12px 30px -18px rgba(20,18,15,.35);
+      --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+      --sans: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+      --max: 1120px;
     }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #15130f;
+        --paper-2: #1d1a15;
+        --ink: #f1ebdf;
+        --ink-2: #c9c1b1;
+        --ink-3: #8f877a;
+        --rule: #3a352c;
+        --red: #ff6a4d;
+        --red-2: #ff8b73;
+        --gold: #d9a94a;
+        --card: #1d1a15;
+        --shadow: 0 1px 0 rgba(0,0,0,.4), 0 12px 30px -18px rgba(0,0,0,.8);
+      }
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      opacity: .35;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+    a { color: var(--red); text-decoration: none; text-decoration-color: color-mix(in srgb, var(--red) 40%, transparent); text-underline-offset: 3px; }
+    a:hover { text-decoration: underline; color: var(--red-2); }
+    ::selection { background: var(--red); color: var(--paper); }
 
-    .colab-list li {
-      margin-bottom: 1rem;
-    }
+    .wrap { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
 
-    .colab-list a {
-      text-decoration: none;
-      color: inherit;
+    .masthead {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 22px 0 14px; border-bottom: 2px solid var(--ink);
+      font-family: var(--mono); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
     }
+    .masthead a { color: inherit; }
+    .masthead nav a { margin-left: 18px; }
+    @media (max-width: 720px) { .masthead nav { display: none; } }
 
-    .news-date {
-      display: block;
-      font-weight: bold;
+    .hero { padding: clamp(40px, 8vw, 96px) 0 clamp(36px, 6vw, 72px); position: relative; overflow: hidden; }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 300; font-variation-settings: "opsz" 144, "SOFT" 30;
+      font-size: clamp(56px, 11vw, 148px); line-height: .9; letter-spacing: -.035em; margin: 0;
+      max-width: 12ch;
     }
+    .hero h1 em { font-style: italic; font-weight: 500; color: var(--red); }
+    .hero .dek {
+      font-family: var(--serif); font-size: clamp(20px, 2.4vw, 28px); line-height: 1.3; font-weight: 400;
+      max-width: 34ch; margin: 28px 0 0; color: var(--ink-2);
+    }
+    .hero .meta {
+      display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 34px;
+      font-family: var(--mono); font-size: 13px; letter-spacing: .04em; color: var(--ink-2);
+    }
+    .hero .meta span::before { content: "\2014\00a0"; color: var(--red); }
+    .stamp {
+      position: absolute; right: 0; top: clamp(30px, 6vw, 70px); transform: rotate(8deg);
+      border: 3px solid var(--red); color: var(--red); border-radius: 6px; padding: 8px 14px;
+      font-family: var(--mono); font-size: 13px; letter-spacing: .18em; text-transform: uppercase; line-height: 1.25;
+      opacity: .85; mix-blend-mode: multiply; text-align: center;
+    }
+    @media (prefers-color-scheme: dark) { .stamp { mix-blend-mode: screen; } }
+    @media (max-width: 720px) { .stamp { position: static; display: inline-block; margin-top: 26px; transform: rotate(-3deg); } }
 
-    .news-title {
-      display: block;
-      font-size: 1.1em;
-    }
+    section { padding: clamp(36px, 6vw, 64px) 0; border-top: 1px solid var(--rule); }
+    .sec-head { display: grid; grid-template-columns: 1fr 3fr; gap: 24px; align-items: end; margin-bottom: 28px; }
+    .sec-head h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 4vw, 44px); letter-spacing: -.02em; line-height: 1; margin: 0; }
+    .sec-head .kicker { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
+    .sec-head p { margin: 0; color: var(--ink-2); max-width: 60ch; }
+    @media (max-width: 720px) { .sec-head { grid-template-columns: 1fr; gap: 10px; } }
 
-    .news-source {
-      display: block;
-      font-size: 0.9em;
-      color: gray;
-    }
+    .prose p { max-width: 68ch; margin: 0 0 1em; }
+    .lede { font-family: var(--serif); font-size: 1.25rem; line-height: 1.45; }
 
-    .link-icon {
-      margin-left: 0.5rem;
-    }
+    .ledger { list-style: none; margin: 0; padding: 0; counter-reset: m; border-top: 1px solid var(--rule); }
+    .ledger li { counter-increment: m; display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+    .ledger li::before { content: counter(m, decimal-leading-zero); font-family: var(--mono); color: var(--red); font-size: 14px; }
+    .ledger b { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; display: block; }
+    .ledger span { color: var(--ink-2); }
+
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 28px; }
+    .facts div { background: var(--card); padding: 16px 18px; }
+    .facts dt { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 6px; }
+    .facts dd { margin: 0; font-family: var(--serif); font-size: 1.15rem; }
+    @media (max-width: 720px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+
+    .people { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+    .person { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: center; }
+    .person img { width: 96px; height: 96px; object-fit: cover; border-radius: 50%; filter: grayscale(1) contrast(1.05); transition: filter .35s ease, transform .35s ease; box-shadow: var(--shadow); }
+    .person:hover img { filter: none; transform: rotate(-2deg) scale(1.03); }
+    .person h3 { font-family: var(--serif); font-weight: 500; font-size: 1.35rem; margin: 0 0 2px; letter-spacing: -.01em; }
+    .person p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+    .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 8px; }
+    .team .person { grid-template-columns: 72px 1fr; gap: 14px; }
+    .team .person img { width: 72px; height: 72px; }
+    .team .person h3 { font-size: 1.15rem; }
+    .team .person small { color: var(--ink-3); font-size: .85rem; }
+    .alumni { margin-top: 28px; color: var(--ink-2); font-size: .95rem; max-width: 68ch; }
+
+    .req { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); max-width: 820px; }
+    .req li { background: var(--card); padding: 18px; }
+    .req b { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; display: block; }
+    .req span { color: var(--ink-2); font-size: .93rem; }
+    @media (max-width: 720px) { .req { grid-template-columns: 1fr; } }
+
+    .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+    .rows li { border-bottom: 1px solid var(--rule); }
+    .rows a { display: grid; grid-template-columns: 110px 1fr auto; gap: 18px; padding: 14px 6px; color: inherit; align-items: baseline; transition: background .2s, padding-left .2s; }
+    .rows a:hover { background: var(--card); padding-left: 12px; text-decoration: none; }
+    .rows a:hover .t { color: var(--red); }
+    .rows .d { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); }
+    .rows .t { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; display: block; }
+    .rows .s { color: var(--ink-2); font-size: .93rem; display: block; }
+    .rows .go { font-family: var(--mono); font-size: 12px; color: var(--ink-3); letter-spacing: .08em; }
+    @media (max-width: 720px) { .rows a { grid-template-columns: 1fr; gap: 4px; } .rows .go { display: none; } }
+
+    .links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .links a { border: 1.5px solid var(--ink); border-radius: 999px; padding: 8px 16px; color: var(--ink); font-family: var(--mono); font-size: 13px; letter-spacing: .04em; transition: background .2s, color .2s, transform .2s; }
+    .links a:hover { background: var(--ink); color: var(--paper); text-decoration: none; transform: translateY(-1px); }
+
+    footer { border-top: 2px solid var(--ink); margin-top: 40px; padding: 28px 0 60px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); letter-spacing: .04em; }
+    footer a { color: var(--ink-2); }
+
+    .rv { opacity: 0; transform: translateY(14px); animation: rv .8s cubic-bezier(.2,.8,.2,1) forwards; }
+    .rv:nth-child(2) { animation-delay: .08s; } .rv:nth-child(3) { animation-delay: .16s; } .rv:nth-child(4) { animation-delay: .24s; }
+    @keyframes rv { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .rv { animation: none; opacity: 1; transform: none; } .person img, .rows a, .links a { transition: none; } }
   </style>
+</head>
+<body>
+<div class="wrap">
 
-  <ol class="colab-list">
-    <li>
-      <a href="https://colab.research.google.com/drive/1QhLLt65YLhxuOw8Q6O7ZkpGPthDEoPbC" target="_blank">
-        <span class="news-date">2025-02-02</span>
-        <span class="news-title">Simple Regression: Turnout vs Search Popularity</span>
-        <span class="news-source">UFL election lab turnout data with Google Trends via Pytrends</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1NSak7_Qj7NHBgQis9xvCgXqPHfK_0In0" target="_blank">
-        <span class="news-date">2025-02-02</span>
-        <span class="news-title">Regression and Correlation: Search vs Voter Turnout</span>
-        <span class="news-source">UFL election lab turnout data with Google Trends in R</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1GbfwEq30CHJEOqKWft9wpo4j2za2paPq" target="_blank">
-        <span class="news-date">2025-02-03</span>
-        <span class="news-title">Political Violence Research Reproduction</span>
-        <span class="news-source">Reproducing Fig 6 of "Current research overstates American support for political violence" (2022)</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1Vlbzd_4YCDSvklFNIUItazr-cs71OonO" target="_blank">
-        <span class="news-date">2025-02-03</span>
-        <span class="news-title">Google Trends Demo with Pytrends</span>
-        <span class="news-source">Simple demonstration of accessing Google search trend data</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1d8nfKPJoCHGPAD9asb5bR55zVYG8UfPB" target="_blank">
-        <span class="news-date">2025-02-04</span>
-        <span class="news-title">HW1: Downloading Your YouTube Data</span>
-        <span class="news-source">Data collection exercise for media consumption analysis</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1A-MoaSyoJEzV038ODvcRBLbsStQC2wvL" target="_blank">
-        <span class="news-date">2025-02-09</span>
-        <span class="news-title">Statistical Error Simulation: 1/√N</span>
-        <span class="news-source">Illustrating the relationship between sample size and estimation error</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1Rd7LsXgGgO2TyJYi3JBENI_1V2EbDdjN" target="_blank">
-        <span class="news-date">2025-02-09</span>
-        <span class="news-title">Statistical Power: Streptomycin Efficacy Study</span>
-        <span class="news-source">Historical example from Victory Lab: 1946-1948 medical trial analysis</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1U6frL5wUH2nfPXp7_RVZj2S545Ba48_1" target="_blank">
-        <span class="news-date">2025-02-10</span>
-        <span class="news-title">Correlation vs Causation (Python)</span>
-        <span class="news-source">Ice cream, temperature, and shorts example illustrating spurious correlation</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1XXZSQvIYi3T5vzyD5JTg-xvvB7Q8HG7i" target="_blank">
-        <span class="news-date">2025-02-10</span>
-        <span class="news-title">Correlation vs Causation (R)</span>
-        <span class="news-source">Ice cream, temperature, and shorts example implemented in R</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1zSuw5KK6ygkZ_3YChO5lYUw1r_XNGj1P" target="_blank">
-        <span class="news-date">2025-02-12</span>
-        <span class="news-title">Sample Size and Statistical Power (R)</span>
-        <span class="news-source">How large N improves accuracy: A/B test with error function analysis</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1C07AACiqfi_loKBscaVzyF_FuF0nPp1j" target="_blank">
-        <span class="news-date">2025-02-17</span>
-        <span class="news-title">Texas Bluesky Archive SQL Setup</span>
-        <span class="news-source">Code to ensure you're able to run SQL queries on the Texas Bluesky Archive</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1RM_irpmRb80pn5KOJf4Y5eSVE7dWMwNv" target="_blank">
-        <span class="news-date">2025-02-25</span>
-        <span class="news-title">Angrist 1990 Instrumental Variables Reproduction</span>
-        <span class="news-source">Vietnam military service, earnings, and draft assignment using Stata data from MIT</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1iDaj-59Gq-Htmut1o5VNHeMocHtui-gu" target="_blank">
-        <span class="news-date">2025-03-03</span>
-        <span class="news-title">IV vs Decision Trees vs XGBoost</span>
-        <span class="news-source">Comparing modeling approaches for predicting political polarization</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1z8fFm-LuxmWABTcElmJ3oUeoclU1J-tv" target="_blank">
-        <span class="news-date">2025-04-08</span>
-        <span class="news-title">Thompson Sampling Visualization</span>
-        <span class="news-source">Interactive demonstration of the 1933 multi-armed bandit algorithm</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/1iVYibXxC5_1vd6Hqkdrwu1fkblESK1Mz" target="_blank">
-        <span class="news-date">2025-04-14</span>
-        <span class="news-title">Contextual Bandits: LinUCB Example</span>
-        <span class="news-source">Tiny implementation of Linear Upper Confidence Bound algorithm</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-    <li>
-      <a href="https://colab.research.google.com/drive/19tZaUomsOspx8pDYgPqsSgMTFiblZ4wt" target="_blank">
-        <span class="news-date">2025-04-16</span>
-        <span class="news-title">Texas Bluesky Archive: Regression Discontinuity Design</span>
-        <span class="news-source">Causal inference example for HW 3 using the Texas Bluesky Archive</span>
-        <i class="fab fa-google link-icon"></i>
-      </a>
-    </li>
-  </ol>
-</div>
-
-
-
-
-
-<footer>
-    <nav aria-label="Related Links">
-        <a href="https://polisci.columbia.edu">Columbia Political Science</a> |
-        <a href="https://datascience.columbia.edu/">Columbia Data Science</a>
+  <div class="masthead">
+    <a href="https://www.columbia.edu">Columbia University</a>
+    <nav aria-label="Sections">
+      <a href="#course">Course</a>
+      <a href="#people">People</a>
+      <a href="#requirements">Requirements</a>
+      <a href="#notebooks">Notebooks</a>
+      <a href="#news">News</a>
+      <a href="https://github.com/Persuasion-at-Scale">GitHub</a>
     </nav>
-</footer>
+  </div>
+
+  <header class="hero">
+    <div class="stamp rv">Spring 2026</div>
+    <h1 class="rv">Persuasion <em>at</em> Scale</h1>
+    <p class="dek rv">Causal inference, machine learning, and an evidence-based understanding of the information environment.</p>
+    <div class="meta rv">
+      <span>Political Science &amp; Data Science</span>
+      <span>Eunji Kim and Chris Wiggins</span>
+      <span><a href="https://doc.sis.columbia.edu/#subj/PSAM/UN3707-20261-001/">Bulletin, PSAM 3707</a></span>
+      <span><a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">Syllabus</a></span>
+      <!-- <span><a href="https://www.notion.so/PSAM-3707-Persuasion-at-Scale-2ea6ebbeffac8038892be013322cd742">Notion</a> (for discussions)</span> -->
+    </div>
+  </header>
+
+  <section id="course">
+    <div class="sec-head">
+      <div><div class="kicker">The course</div><h2>What is persuasion, measured?</h2></div>
+      <p>A cross-disciplinary course that treats persuasion as something you can estimate, not just describe: what changes minds, by how much, and how anyone would know.</p>
+    </div>
+    <div class="prose">
+      <p class="lede">The course explores the multifaceted nature of persuasion in the modern world, bridging political science, communication, journalism, marketing, and public health. It combines rich theories of communication with practical, hands-on analysis of real-world data.</p>
+      <p>Students quantify the effects of partisan media, social media, and political campaigns, and trace the historical evolution of persuasive techniques for the context to understand current trends and anticipate the next ones. The course fulfills the quantitative methods requirement for the Political Science major.</p>
+      <p>For complete course details, including call number, location, grading policies, and office hours, see the <a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">syllabus</a>, the final source of truth for all of it.</p>
+    </div>
+    <ol class="ledger" aria-label="Methods">
+      <li><div><b>Randomized controlled trials</b><span>The gold standard, from the 1948 streptomycin trial to today's A/B tests.</span></div></li>
+      <li><div><b>Natural experiments</b><span>Instrumental variables and regression discontinuity when you cannot randomize.</span></div></li>
+      <li><div><b>Causal inference</b><span>From correlation to effect: what a number about persuasion actually means.</span></div></li>
+      <li><div><b>Machine learning and bandits</b><span>Targeting, Thompson sampling, contextual bandits: learning while deciding.</span></div></li>
+    </ol>
+    <dl class="facts">
+      <div><dt>Listed as</dt><dd>PSAM UN3707</dd></div>
+      <div><dt>Term</dt><dd>Spring 2026</dd></div>
+      <div><dt>Meets</dt><dd>Mon and Wed, 11:40 to 12:55</dd></div>
+      <div><dt>Details</dt><dd><a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">Syllabus</a></dd></div>
+      <div><dt>Registrar</dt><dd><a href="https://doc.sis.columbia.edu/#subj/PSAM/UN3707-20261-001/">Bulletin entry</a></dd></div>
+      <div><dt>Recognition</dt><dd><a href="https://provost.columbia.edu/news/announcing-office-provost-faculty-awardees">2024 Cross-Disciplinary Frontiers Courses award</a></dd></div>
+    </dl>
+  </section>
+
+  <section id="people">
+    <div class="sec-head">
+      <div><div class="kicker">People</div><h2>Instructors</h2></div>
+      <p>A political scientist and an applied mathematician, teaching the same question from two sides.</p>
+    </div>
+    <div class="people">
+      <div class="person">
+        <img src="images/ek.webp" alt="Eunji Kim, Assistant Professor of Political Science at Columbia University" loading="lazy" width="96" height="96">
+        <div><h3><a href="https://www.eunjikim.pub/">Eunji Kim</a></h3><p>Assistant Professor of Political Science</p><p>School of Arts and Sciences</p></div>
+      </div>
+      <div class="person">
+        <img src="images/cw.webp" alt="Chris Wiggins, Associate Professor of Applied Mathematics at Columbia University" loading="lazy" width="96" height="96">
+        <div><h3><a href="https://www.columbia.edu/~chw2/">Chris Wiggins</a></h3><p>Associate Professor of Applied Mathematics</p><p>Fu Foundation School of Engineering and Applied Science</p></div>
+      </div>
+    </div>
+
+    <div class="sec-head" style="margin-top:44px">
+      <div><div class="kicker">Spring 2026</div><h2>Teaching team</h2></div>
+      <p>Three political science PhD students run sections and office hours; times and contact details are in the syllabus.</p>
+    </div>
+    <div class="team">
+      <div class="person"><img src="images/ae.webp" alt="Alec R. Ewig, Teaching Assistant" loading="lazy" width="72" height="72"><div><h3>Alec R. Ewig</h3><p>PhD Student, Political Science</p><small>American Politics</small></div></div>
+      <div class="person"><img src="images/cb.webp" alt="Carolina Bernal, Teaching Assistant" loading="lazy" width="72" height="72"><div><h3>Carolina Bernal</h3><p>PhD Student, Political Science</p><small>Comparative Politics</small></div></div>
+      <div class="person"><img src="images/eg.webp" alt="Elden Griggs, Teaching Assistant" loading="lazy" width="72" height="72"><div><h3>Elden Griggs</h3><p>PhD Student, Political Science</p><small>International Relations</small></div></div>
+    </div>
+    <p class="alumni">Spring 2025 teaching team: Anum Ahmad, Luke Estrada, Julian Gerez, Bardia Rahmani, and Emma Swanson.</p>
+  </section>
+
+  <section id="requirements">
+    <div class="sec-head">
+      <div><div class="kicker">Requirements</div><h2>How the grade is made</h2></div>
+      <p>The quantitative grading breakdown and the late-work policy are in the <a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">syllabus</a>.</p>
+    </div>
+    <ul class="req">
+      <li><b>Homework</b><span>Assignments that put the week's method to work on real data.</span></li>
+      <li><b>Midterm exam</b><span>In class.</span></li>
+      <li><b>Final exam</b><span>In class.</span></li>
+    </ul>
+  </section>
+
+  <section id="notebooks">
+    <div class="sec-head">
+      <div><div class="kicker">Code</div><h2>Notebooks</h2></div>
+      <p>Interactive Colab notebooks used in the 2025 course, in order; the 2026 set will be posted. Runnable versions of the bandit material live in the <a href="https://github.com/Persuasion-at-Scale">Persuasion at Scale GitHub organization</a>.</p>
+    </div>
+    <ol class="rows">
+      <li><a href="https://colab.research.google.com/drive/1QhLLt65YLhxuOw8Q6O7ZkpGPthDEoPbC" target="_blank" rel="noopener"><span class="d">2025-02-02</span><span><span class="t">Simple regression: turnout vs search popularity</span><span class="s">UFL election lab turnout data with Google Trends via Pytrends</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1NSak7_Qj7NHBgQis9xvCgXqPHfK_0In0" target="_blank" rel="noopener"><span class="d">2025-02-02</span><span><span class="t">Regression and correlation: search vs voter turnout</span><span class="s">UFL election lab turnout data with Google Trends, in R</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1GbfwEq30CHJEOqKWft9wpo4j2za2paPq" target="_blank" rel="noopener"><span class="d">2025-02-03</span><span><span class="t">Political violence research reproduction</span><span class="s">Reproducing Fig. 6 of "Current research overstates American support for political violence" (2022)</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1Vlbzd_4YCDSvklFNIUItazr-cs71OonO" target="_blank" rel="noopener"><span class="d">2025-02-03</span><span><span class="t">Google Trends demo with Pytrends</span><span class="s">Accessing Google search trend data</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1d8nfKPJoCHGPAD9asb5bR55zVYG8UfPB" target="_blank" rel="noopener"><span class="d">2025-02-04</span><span><span class="t">HW1: downloading your YouTube data</span><span class="s">Data collection for the media consumption analysis</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1A-MoaSyoJEzV038ODvcRBLbsStQC2wvL" target="_blank" rel="noopener"><span class="d">2025-02-09</span><span><span class="t">Statistical error simulation: 1/&radic;N</span><span class="s">How sample size drives estimation error</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1Rd7LsXgGgO2TyJYi3JBENI_1V2EbDdjN" target="_blank" rel="noopener"><span class="d">2025-02-09</span><span><span class="t">Statistical power: the streptomycin trial</span><span class="s">The 1946 to 1948 medical trial from The Victory Lab</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1U6frL5wUH2nfPXp7_RVZj2S545Ba48_1" target="_blank" rel="noopener"><span class="d">2025-02-10</span><span><span class="t">Correlation vs causation (Python)</span><span class="s">Ice cream, temperature, and shorts: a spurious correlation</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1XXZSQvIYi3T5vzyD5JTg-xvvB7Q8HG7i" target="_blank" rel="noopener"><span class="d">2025-02-10</span><span><span class="t">Correlation vs causation (R)</span><span class="s">The same example in R</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1zSuw5KK6ygkZ_3YChO5lYUw1r_XNGj1P" target="_blank" rel="noopener"><span class="d">2025-02-12</span><span><span class="t">Sample size and statistical power (R)</span><span class="s">How a large N improves accuracy: an A/B test with error-function analysis</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1C07AACiqfi_loKBscaVzyF_FuF0nPp1j" target="_blank" rel="noopener"><span class="d">2025-02-17</span><span><span class="t">Texas Bluesky Archive: SQL setup</span><span class="s">Running SQL queries on the Texas Bluesky Archive</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1RM_irpmRb80pn5KOJf4Y5eSVE7dWMwNv" target="_blank" rel="noopener"><span class="d">2025-02-25</span><span><span class="t">Angrist 1990: instrumental variables reproduction</span><span class="s">Vietnam draft assignment, military service and earnings, from Stata data at MIT</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1iDaj-59Gq-Htmut1o5VNHeMocHtui-gu" target="_blank" rel="noopener"><span class="d">2025-03-03</span><span><span class="t">IV vs decision trees vs XGBoost</span><span class="s">Comparing modeling approaches for predicting political polarization</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1z8fFm-LuxmWABTcElmJ3oUeoclU1J-tv" target="_blank" rel="noopener"><span class="d">2025-04-08</span><span><span class="t">Thompson sampling visualization</span><span class="s">The 1933 multi-armed bandit algorithm, interactively</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/1iVYibXxC5_1vd6Hqkdrwu1fkblESK1Mz" target="_blank" rel="noopener"><span class="d">2025-04-14</span><span><span class="t">Contextual bandits: a LinUCB example</span><span class="s">A tiny implementation of linear upper confidence bound</span></span><span class="go">COLAB</span></a></li>
+      <li><a href="https://colab.research.google.com/drive/19tZaUomsOspx8pDYgPqsSgMTFiblZ4wt" target="_blank" rel="noopener"><span class="d">2025-04-16</span><span><span class="t">Texas Bluesky Archive: regression discontinuity design</span><span class="s">Causal inference example for HW3</span></span><span class="go">COLAB</span></a></li>
+    </ol>
+  </section>
+
+  <section id="news">
+    <div class="sec-head">
+      <div><div class="kicker">In the press, and on stage</div><h2>News and talks</h2></div>
+      <p>Coverage of the course and talks about what it taught us.</p>
+    </div>
+    <ul class="rows">
+      <li><a href="https://santafe.edu/events/seminar-chris-wiggins-2026" target="_blank" rel="noopener"><span class="d">2026</span><span><span class="t">Persuasion at Scale: Machine Learning, Causality, and the Information Ecosystem (Lessons Learned)</span><span class="s">Santa Fe Institute seminar</span></span><span class="go">TALK</span></a></li>
+      <li><a href="https://news.columbia.edu/news/proposing-false-narrative-american-dream" target="_blank" rel="noopener"><span class="d">2025</span><span><span class="t">Proposing a False Narrative of the American Dream</span><span class="s">Columbia News</span></span><span class="go">NEWS</span></a></li>
+      <li><a href="lectures/2025-06-26-p@s-wiggins-public.pdf" target="_blank" rel="noopener"><span class="d">2025-06-26</span><span><span class="t">Persuasion at Scale: Machine Learning, Causality and the Information Ecosystem</span><span class="s">Columbia Data Science Institute, Computational Social Science Working Group (slides)</span></span><span class="go">PDF</span></a></li>
+      <li><a href="https://www.college.columbia.edu/news/introducing-persuasion-scale" target="_blank" rel="noopener"><span class="d">2025-02-19</span><span><span class="t">Introducing "Persuasion at Scale"</span><span class="s">Columbia College</span></span><span class="go">NEWS</span></a></li>
+      <li><a href="https://www.columbiaspectator.com/news/2024/11/25/new-persuasion-at-scale-course-wins-2024-cross-disciplinary-frontiers-courses-award/" target="_blank" rel="noopener"><span class="d">2024-11-25</span><span><span class="t">New Persuasion at Scale course wins 2024 Cross-Disciplinary Frontiers Courses award</span><span class="s">Columbia Daily Spectator</span></span><span class="go">NEWS</span></a></li>
+      <li><a href="https://www.engineering.columbia.edu/about/news/how-does-information-ecosystem-influence-politics" target="_blank" rel="noopener"><span class="d">2024-11-22</span><span><span class="t">How does the information ecosystem influence politics?</span><span class="s">Columbia Engineering News</span></span><span class="go">NEWS</span></a></li>
+    </ul>
+
+    <h3 style="font-family:var(--serif);font-weight:500;font-size:1.3rem;margin:40px 0 14px">Elsewhere</h3>
+    <div class="links">
+      <a href="https://github.com/Persuasion-at-Scale">GitHub organization</a>
+      <a href="https://scienceandsociety.columbia.edu/courses/un3707-persuasion-scale">Science and Society listing</a>
+      <a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">Syllabus</a>
+      <a href="https://drive.google.com/file/d/1h9NI8b9k3yPVoDk75ptKbOM--GSInbzh/view?usp=sharing">DSI talk slides on Drive</a>
+      <a href="https://polisci.columbia.edu">Columbia Political Science</a>
+      <a href="https://datascience.columbia.edu/">Columbia Data Science Institute</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Persuasion at Scale, Columbia University</span>
+    <span><a href="https://www.eunjikim.pub/">Eunji Kim</a> and <a href="https://www.columbia.edu/~chw2/">Chris Wiggins</a></span>
+  </footer>
+</div>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0B85Z9L2BZ"></script>
@@ -607,25 +370,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-0B85Z9L2BZ');
 </script>
-
 </body>
 </html>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "What is Persuasion at Scale?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "It's a Columbia University course that blends data science and political science to explore how persuasion works in digital media."
-    }
-  }]
-}
-</script>
