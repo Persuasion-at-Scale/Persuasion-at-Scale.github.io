@@ -1,89 +1,106 @@
-<div class="wrap">
+    <!-- Header -->
+    <header class="header">
+        <h1>The math you will use</h1>
+        <h2>Persuasion at Scale (PSAM UN3707): what the course actually asks of you, and how to get ready</h2>
+        <div class="course-meta">
+            <span><i class="far fa-calendar"></i>Spring 2027</span>
+        </div>
+        <p><a href="index.html">Back to the course page</a></p>
+    </header>
 
-  <div class="masthead">
-    <a href="https://www.columbia.edu">Columbia University</a>
-    <nav aria-label="Sections">
-      <a href="index.html">Course page</a>
-      <a href="#use">What you will use</a>
-      <a href="#not">What you will not need</a>
-      <a href="#ready">How to get ready</a>
-      <a href="#quant">For quant majors</a>
-    </nav>
-  </div>
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-book"></i>
+            <h2>Why this page exists</h2>
+        </div>
+        <p>This is a methods course. Every week you will take a real dataset and answer a question about
+        persuasion with it: did the ad work, did the algorithm change what people saw, which message should
+        the campaign send next. Answering those questions takes some mathematics and some programming. This
+        page says which, at the level the course uses them, so that nobody is surprised in week three and
+        nobody who would enjoy the course stays away because they assumed it was harder or softer than it is.</p>
+        <p>Two audiences read this page. If you are a political science, economics, or other social science
+        major, read it as a list of what to brush up on. If you are an applied math, statistics, computer
+        science, or engineering major, read it as a list of what you will get to use on problems you have
+        not seen before.</p>
+    </div>
 
-  <header class="hero">
-    <div class="stamp rv">Spring 2027</div>
-    <h1 class="rv">The math <em>you will</em> use</h1>
-    <p class="dek rv">What Persuasion at Scale actually asks of you, at the level it asks it, and how to get ready before the first class.</p>
-    <div class="meta rv">
-      <span>PSAM UN3707</span>
-      <span><a href="index.html">Back to the course page</a></span>
-      <span><a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">Syllabus</a></span>
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-square-root-alt"></i>
+            <h2>What you will use</h2>
+        </div>
+        <h3>Probability and statistics</h3>
+        <ul>
+            <li>Expectation, variance, and conditional probability, used constantly and never derived from scratch.</li>
+            <li>Reading a regression table: what a coefficient, a standard error, a confidence interval, and a p-value each tell you, and what they do not.</li>
+            <li>Regression with an interaction term, which is how we ask whether a message works differently for different people.</li>
+        </ul>
+        <h3>Causal inference</h3>
+        <ul>
+            <li>Potential outcomes: the difference between what happened and what we <em>made</em> happen.</li>
+            <li>Randomized experiments and why randomization licenses a causal claim.</li>
+            <li>Natural experiments: difference in differences, and instrumental variables as two-stage least squares, including what a weak instrument is and how to tell.</li>
+        </ul>
+        <h3>Optimization and learning</h3>
+        <ul>
+            <li>Multi-armed bandits: epsilon-greedy, upper confidence bound, and Thompson sampling, as the loop that ad platforms and campaigns actually run.</li>
+            <li>Contextual bandits: the same loop when the system knows something about the person.</li>
+            <li>Recommender systems: vectors, dot products, and matrix factorization, which is the small amount of linear algebra the course needs.</li>
+            <li>Large language models as persuaders: how researchers post-train and scale models for persuasion, and how to read the effect sizes from those experiments.</li>
+        </ul>
+        <h3>Programming</h3>
+        <ul>
+            <li>Python, in Google Colab, so there is nothing to install.</li>
+            <li>pandas for tables, numpy for arithmetic, matplotlib for plots.</li>
+            <li>Every lecture comes with a notebook that already runs. Your job is to change a line, rerun it, and say what changed and why.</li>
+        </ul>
     </div>
-  </header>
 
-  <section id="why">
-    <div class="sec-head">
-      <div><div class="kicker">Why this page</div><h2>So nobody is surprised in week three</h2></div>
-      <p>A methods course, taught on real data, needs some mathematics and some programming. This page says which.</p>
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-ban"></i>
+            <h2>What you will not need</h2>
+        </div>
+        <ul>
+            <li>Proofs. You will read formulas with sums, logarithms, and square roots, and you will use them; you will not be asked to prove theorems.</li>
+            <li>Prior coursework in machine learning or causal inference. The course builds each method from an example before naming it.</li>
+            <li>Prior Python. The first notebooks are the on-ramp, and the teaching assistants hold office hours for exactly this.</li>
+        </ul>
+        <p>Assessment is problem sets, a midterm, and a final, graded on whether you can run a method and
+        interpret the result, in that order. Details, dates, and grading weights are in the
+        <a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">syllabus</a>.</p>
     </div>
-    <div class="prose">
-      <p class="lede">Every week you take a real dataset and answer a question about persuasion with it: did the ad work, did the algorithm change what people saw, which message should the campaign send next. Answering those questions takes tools, and the tools are listed below at the level the course uses them.</p>
-      <p>Two audiences read this page. If you are a political science, economics, or other social science major, read it as a list of what to brush up on. If you are an applied math, statistics, computer science, or engineering major, read it as a list of what you will get to use on problems you have not seen before.</p>
-    </div>
-  </section>
 
-  <section id="use">
-    <div class="sec-head">
-      <div><div class="kicker">What you will use</div><h2>Four kinds of tools</h2></div>
-      <p>Introduced from an example before being named, and used every week after that.</p>
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-running"></i>
+            <h2>How to get ready</h2>
+        </div>
+        <ol>
+            <li>Open any notebook linked from the <a href="index.html">course page</a>, run every cell, and read the output. If you can do that, you can do the homework.</li>
+            <li>If regression is new to you: be able to say what a slope and an intercept are, and what a standard error measures. One evening with any introductory statistics text covers it.</li>
+            <li>If Python is new to you: in the same notebook, change one number in one cell, rerun, and find what moved in the output. That is most of what the course asks of your programming.</li>
+            <li>If probability is rusty: know what an expected value is and why averaging over more samples gives a tighter estimate. The bandit unit rests on that one idea.</li>
+        </ol>
     </div>
-    <ol class="ledger" aria-label="Tools">
-      <li><div><b>Probability and statistics</b><span>Expectation, variance, and conditional probability, used constantly and never derived from scratch. Reading a regression table: what a coefficient, a standard error, a confidence interval, and a p-value each tell you, and what they do not. Regression with an interaction term, which is how we ask whether a message works differently for different people.</span></div></li>
-      <li><div><b>Causal inference</b><span>Potential outcomes: the difference between what happened and what we made happen. Randomized experiments and why randomization licenses a causal claim. Natural experiments: difference in differences, and instrumental variables as two-stage least squares, including what a weak instrument is and how to tell.</span></div></li>
-      <li><div><b>Optimization and learning</b><span>Multi-armed bandits (epsilon-greedy, upper confidence bound, Thompson sampling) as the loop that ad platforms and campaigns actually run. Contextual bandits, the same loop when the system knows something about the person. Recommender systems: vectors, dot products, and matrix factorization, which is the small amount of linear algebra the course needs. Large language models as persuaders: how researchers post-train and scale models for persuasion, and how to read the effect sizes from those experiments.</span></div></li>
-      <li><div><b>Programming</b><span>Python, in Google Colab, so there is nothing to install. pandas for tables, numpy for arithmetic, matplotlib for plots. Every lecture comes with a notebook that already runs. Your job is to change a line, rerun it, and say what changed and why.</span></div></li>
-    </ol>
-  </section>
 
-  <section id="not">
-    <div class="sec-head">
-      <div><div class="kicker">What you will not need</div><h2>Three things people assume</h2></div>
-      <p>Assessment is problem sets plus an in-class midterm and final, graded on whether you can run a method and interpret the result, in that order. Details and weights are in the <a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">syllabus</a>.</p>
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-flask"></i>
+            <h2>For applied math, statistics, and computer science majors</h2>
+        </div>
+        <p>The methods above are introduced from examples, but the examples are real and the questions are
+        open. Instrumental variables is an identification problem. Bandits are online learning with a regret
+        bound you can check against the simulation. Recommender systems are matrix factorization on a
+        dataset that shaped what a hundred million people watched. The closing unit reads the 2024 to 2026
+        experiments in which researchers trained language models to persuade and measured how persuasion
+        scales with model size and post-training, and asks what the next experiment should be.</p>
+        <p>The course is co-listed under Applied Mathematics. Applied math majors: ask your adviser about
+        counting it as a technical elective.</p>
     </div>
-    <ul class="req">
-      <li><b>Proofs</b><span>You will read formulas with sums, logarithms, and square roots, and you will use them; you will not be asked to prove theorems.</span></li>
-      <li><b>Prior coursework in machine learning or causal inference</b><span>The course builds each method from an example before naming it.</span></li>
-      <li><b>Prior Python</b><span>The first notebooks are the on-ramp, and the teaching assistants hold office hours for exactly this.</span></li>
-    </ul>
-  </section>
 
-  <section id="ready">
-    <div class="sec-head">
-      <div><div class="kicker">How to get ready</div><h2>Four things to do before January</h2></div>
-      <p>None takes more than an evening.</p>
-    </div>
-    <ol class="ledger" aria-label="Preparation">
-      <li><div><b>Run a notebook</b><span>Open any notebook linked from the <a href="index.html#notebooks">course page</a>, run every cell, and read the output. If you can do that, you can do the homework.</span></div></li>
-      <li><div><b>If regression is new</b><span>Be able to say what a slope and an intercept are, and what a standard error measures. One evening with any introductory statistics text covers it.</span></div></li>
-      <li><div><b>If Python is new</b><span>In the same notebook, change one number in one cell, rerun, and find what changed in the output. That is most of what the course asks of your programming.</span></div></li>
-      <li><div><b>If probability is rusty</b><span>Know what an expected value is and why averaging over more samples gives a tighter estimate. The bandit unit rests on that one idea.</span></div></li>
-    </ol>
-  </section>
-
-  <section id="quant">
-    <div class="sec-head">
-      <div><div class="kicker">For applied math, statistics, and CS majors</div><h2>Where it gets technical</h2></div>
-      <p>The methods are introduced from examples, but the examples are real and the questions are open.</p>
-    </div>
-    <div class="prose">
-      <p>Instrumental variables is an identification problem. Bandits are online learning with a regret bound you can check against the simulation. Recommender systems are matrix factorization on a dataset that shaped what a hundred million people watched. The closing unit reads the 2024 to 2026 experiments in which researchers trained language models to persuade and measured how persuasion scales with model size and post-training, and asks what the next experiment should be.</p>
-      <p>The course is co-listed under Applied Mathematics. Applied math majors: ask your adviser about counting it as a technical elective.</p>
-    </div>
-  </section>
-
-  <footer>
-    <span><a href="index.html">Persuasion at Scale</a>, Columbia University</span>
-    <span><a href="https://www.columbia.edu/~chw2/">Chris Wiggins</a></span>
-  </footer>
-</div>
+    <footer style="text-align: center; margin-top: 3rem; color: #666;">
+        <a href="index.html">Persuasion at Scale</a> |
+        <a href="https://polisci.columbia.edu">Columbia Political Science</a> |
+        <a href="https://datascience.columbia.edu/">Columbia Data Science</a>
+    </footer>

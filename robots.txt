@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://persuasion-at-scale.github.io/sitemap.xml

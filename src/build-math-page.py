@@ -34,10 +34,11 @@ for old in (
     'content="https://persuasion-at-scale.github.io/"',
 ):
     head = head.replace(old, 'content="https://persuasion-at-scale.github.io/math.html"')
-head = head.replace(
+for old in (
     '<link rel="canonical" href="https://persuasion-at-scale.github.io/">',
-    '<link rel="canonical" href="https://persuasion-at-scale.github.io/math.html">',
-)
+    '<link rel="canonical" href="https://persuasion-at-scale.github.io/index.html">',
+):
+    head = head.replace(old, '<link rel="canonical" href="https://persuasion-at-scale.github.io/math.html">')
 # The main page's Course structured data does not describe this page; drop it.
 head = re.sub(r'<script type="application/ld\+json">.*?</script>\s*', "", head, flags=re.S)
 
