@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="What mathematics and programming Persuasion at Scale (PSAM UN3707) actually uses, and how to get ready before the first class." />
+    <meta name="keywords" content="persuasion, bandits, MAB, contextual bandits, P-values, backtesting, data science, political science, Columbia University, RCTs, causal inference, machine learning, media analysis, PSAM3707, Eunji Kim, Chris Wiggins, P@S, P@S@CU">
+    <meta name="twitter:card" content="summary_large_image">
+   <meta property="og:title" content="Persuasion at Scale | Columbia University">
+    <meta property="og:description" content="A cross-disciplinary course at Columbia University exploring persuasion through data science and political science.">
+    <meta property="og:image" content="images/persuasion_banner.webp">
+    <meta property="og:url" content="https://persuasion-at-scale.github.io/math.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Columbia University">
+    <meta name="twitter:site" content="@Columbia">
+
+    <!-- Add preload for critical assets -->
+    <link rel="preload" href="images/persuasion_banner.webp" as="image">
+    <link rel="preload" href="images/ek.webp" as="image">
+    <link rel="preload" href="images/cw.webp" as="image">
+
+    <!-- Add to Font Awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <title>The math you will use | Persuasion at Scale | Columbia University</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: #333;
+        }
+
+        .card {
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: #111;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: #666;
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Update the .instructor img rule so all images are a uniform size */
+        .instructor img {
+            width: 150px; /* fixed width */
+            height: 150px; /* fixed height to make them square */
+            object-fit: cover; /* crop any overflow instead of stretching */
+            border-radius: 8px; /* keep the corners rounded */
+            margin-bottom: 1rem;
+        }
+
+        .instructor h3 {
+            margin: 0.5rem 0;
+            color: #111;
+        }
+
+        .instructor p {
+            margin: 0.25rem 0;
+            color: #666;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 1rem;
+            color: #666;
+            align-items: center;
+        }
+
+        .course-meta i {
+            margin-right: 0.5rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #111;
+        }
+
+        .card-title i {
+            margin-right: 0.5rem;
+        }
+
+        .news-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .news-list li {
+            margin-bottom: 1.5rem;
+        }
+
+        .news-list a {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+            padding: 1rem;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+            align-items: start;
+        }
+
+        .news-list a:hover {
+            background-color: #f6f8fa;
+        }
+
+        .news-date {
+            color: #666;
+            font-size: 0.9rem;
+            grid-column: 1;
+        }
+
+        .news-title {
+            font-weight: 500;
+            color: #0366d6;
+            grid-column: 2;
+        }
+
+        .news-source {
+            color: #666;
+            font-size: 0.9rem;
+            grid-column: 2;
+        }
+
+        .link-icon {
+            font-size: 0.8rem;
+            color: #666;
+            grid-column: 3;
+            grid-row: 1;
+            margin-top: 0.3rem;
+        }
+    </style>
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Columbia University",
+        "item": "https://www.columbia.edu"
+    },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Political Science",
+        "item": "https://polisci.columbia.edu"
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Persuasion at Scale",
+        "item": "https://persuasion-at-scale.github.io/index.html"
+    }]
+}
+</script>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@type": "CourseInstance",
+  "courseMode": "onsite",
+  "location": {
+    "@type": "Place",
+    "name": "313 Fayerweather",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "New York",
+      "addressRegion": "NY"
+    }
+  },
+  "instructor": [
+    {
+      "@type": "Person",
+      "name": "Eunji Kim",
+      "jobTitle": "Assistant Professor of Political Science",
+      "url": "https://www.eunjikim.pub/"
+    },
+    {
+      "@type": "Person",
+      "name": "Chris Wiggins",
+      "jobTitle": "Associate Professor of Applied Mathematics",
+      "url": "https://www.columbia.edu/~chw2/"
+    }
+  ]
+}
+</script>
+
+<!-- 🔽 Add this right below -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Persuasion at Scale",
+  "description": "Columbia University course blending political science and data science to study persuasion through experiments, machine learning, and causal inference.",
+  "provider": {
+    "@type": "Organization",
+    "name": "Columbia University",
+    "sameAs": "https://www.columbia.edu"
+  }
+}
+</script>
+
+<link rel="canonical" href="https://persuasion-at-scale.github.io/index.html">
+
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>The math you will use</h1>
+        <h2>Persuasion at Scale (PSAM UN3707): what the course actually asks of you, and how to get ready</h2>
+        <div class="course-meta">
+            <span><i class="far fa-calendar"></i>Spring 2027</span>
+        </div>
+        <p><a href="index.html">Back to the course page</a></p>
+    </header>
+
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-book"></i>
+            <h2>Why this page exists</h2>
+        </div>
+        <p>This is a methods course. Every week you will take a real dataset and answer a question about
+        persuasion with it: did the ad work, did the algorithm change what people saw, which message should
+        the campaign send next. Answering those questions takes some mathematics and some programming. This
+        page says which, at the level the course uses them, so that nobody is surprised in week three and
+        nobody who would enjoy the course stays away because they assumed it was harder or softer than it is.</p>
+        <p>Two audiences read this page. If you are a political science, economics, or other social science
+        major, read it as a list of what to brush up on. If you are an applied math, statistics, computer
+        science, or engineering major, read it as a list of what you will get to use on problems you have
+        not seen before.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-square-root-alt"></i>
+            <h2>What you will use</h2>
+        </div>
+        <h3>Probability and statistics</h3>
+        <ul>
+            <li>Expectation, variance, and conditional probability, used constantly and never derived from scratch.</li>
+            <li>Reading a regression table: what a coefficient, a standard error, a confidence interval, and a p-value each tell you, and what they do not.</li>
+            <li>Regression with an interaction term, which is how we ask whether a message works differently for different people.</li>
+        </ul>
+        <h3>Causal inference</h3>
+        <ul>
+            <li>Potential outcomes: the difference between what happened and what we <em>made</em> happen.</li>
+            <li>Randomized experiments and why randomization licenses a causal claim.</li>
+            <li>Natural experiments: difference in differences, and instrumental variables as two-stage least squares, including what a weak instrument is and how to tell.</li>
+        </ul>
+        <h3>Optimization and learning</h3>
+        <ul>
+            <li>Multi-armed bandits: epsilon-greedy, upper confidence bound, and Thompson sampling, as the loop that ad platforms and campaigns actually run.</li>
+            <li>Contextual bandits: the same loop when the system knows something about the person.</li>
+            <li>Recommender systems: vectors, dot products, and matrix factorization, which is the small amount of linear algebra the course needs.</li>
+            <li>Large language models as persuaders: how researchers post-train and scale models for persuasion, and how to read the effect sizes from those experiments.</li>
+        </ul>
+        <h3>Programming</h3>
+        <ul>
+            <li>Python, in Google Colab, so there is nothing to install.</li>
+            <li>pandas for tables, numpy for arithmetic, matplotlib for plots.</li>
+            <li>Every lecture comes with a notebook that already runs. Your job is to change a line, rerun it, and say what changed and why.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-ban"></i>
+            <h2>What you will not need</h2>
+        </div>
+        <ul>
+            <li>Proofs. You will read formulas with sums, logarithms, and square roots, and you will use them; you will not be asked to prove theorems.</li>
+            <li>Prior coursework in machine learning or causal inference. The course builds each method from an example before naming it.</li>
+            <li>Prior Python. The first notebooks are the on-ramp, and the teaching assistants hold office hours for exactly this.</li>
+        </ul>
+        <p>Assessment is problem sets, a midterm, and a final, graded on whether you can run a method and
+        interpret the result, in that order. Details, dates, and grading weights are in the
+        <a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">syllabus</a>.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-running"></i>
+            <h2>How to get ready</h2>
+        </div>
+        <ol>
+            <li>Open any notebook linked from the <a href="index.html">course page</a>, run every cell, and read the output. If you can do that, you can do the homework.</li>
+            <li>If regression is new to you: be able to say what a slope and an intercept are, and what a standard error measures. One evening with any introductory statistics text covers it.</li>
+            <li>If Python is new to you: in the same notebook, change one number in one cell, rerun, and find what moved in the output. That is most of what the course asks of your programming.</li>
+            <li>If probability is rusty: know what an expected value is and why averaging over more samples gives a tighter estimate. The bandit unit rests on that one idea.</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <div class="card-title">
+            <i class="fas fa-flask"></i>
+            <h2>For applied math, statistics, and computer science majors</h2>
+        </div>
+        <p>The methods above are introduced from examples, but the examples are real and the questions are
+        open. Instrumental variables is an identification problem. Bandits are online learning with a regret
+        bound you can check against the simulation. Recommender systems are matrix factorization on a
+        dataset that shaped what a hundred million people watched. The closing unit reads the 2024 to 2026
+        experiments in which researchers trained language models to persuade and measured how persuasion
+        scales with model size and post-training, and asks what the next experiment should be.</p>
+        <p>The course is co-listed under Applied Mathematics. Applied math majors: ask your adviser about
+        counting it as a technical elective.</p>
+    </div>
+
+    <footer style="text-align: center; margin-top: 3rem; color: #666;">
+        <a href="index.html">Persuasion at Scale</a> |
+        <a href="https://polisci.columbia.edu">Columbia Political Science</a> |
+        <a href="https://datascience.columbia.edu/">Columbia Data Science</a>
+    </footer>
+
+</body>
+</html>
