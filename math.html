@@ -1,361 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="styles.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="What mathematics and programming Persuasion at Scale (PSAM UN3707) actually uses, and how to get ready before the first class." />
-    <meta name="keywords" content="persuasion, bandits, MAB, contextual bandits, P-values, backtesting, data science, political science, Columbia University, RCTs, causal inference, machine learning, media analysis, PSAM3707, Eunji Kim, Chris Wiggins, P@S, P@S@CU">
-    <meta name="twitter:card" content="summary_large_image">
-   <meta property="og:title" content="Persuasion at Scale | Columbia University">
-    <meta property="og:description" content="A cross-disciplinary course at Columbia University exploring persuasion through data science and political science.">
-    <meta property="og:image" content="images/persuasion_banner.webp">
-    <meta property="og:url" content="https://persuasion-at-scale.github.io/math.html">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The math you will use | Persuasion at Scale | Columbia University</title>
+  <meta name="description" content="What mathematics and programming Persuasion at Scale (PSAM UN3707) actually uses, and how to get ready before the first class.">
+  <meta name="keywords" content="Persuasion at Scale, Columbia University, Eunji Kim, Chris Wiggins, political science, data science, causal inference, randomized controlled trials, natural experiments, machine learning, contextual bandits, Thompson sampling, A/B testing, media effects, PSAM UN3707, P@S">
+  <link rel="canonical" href="https://persuasion-at-scale.github.io/math.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Persuasion at Scale">
+  <meta property="og:title" content="Persuasion at Scale | Columbia University">
+  <meta property="og:description" content="A Columbia course on how persuasion works at scale: experiments, causal inference, machine learning and bandits, applied to media, campaigns and social platforms.">
+  <meta property="og:url" content="https://persuasion-at-scale.github.io/math.html">
+  <meta property="og:image" content="https://persuasion-at-scale.github.io/images/persuasion_banner.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Columbia">
+  <meta name="theme-color" content="#f4efe6">
 
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Columbia University">
-    <meta name="twitter:site" content="@Columbia">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
-    <!-- Add preload for critical assets -->
-    <link rel="preload" href="images/persuasion_banner.webp" as="image">
-    <link rel="preload" href="images/ek.webp" as="image">
-    <link rel="preload" href="images/cw.webp" as="image">
-
-    <!-- Add to Font Awesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-
-    <title>The math you will use | Persuasion at Scale | Columbia University</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-            color: #333;
-        }
-
-        .card {
-            border: 1px solid #eaeaea;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            margin-bottom: 3rem;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: #111;
-        }
-
-        h2 {
-            font-size: 1.25rem;
-            color: #666;
-            font-weight: normal;
-            margin-bottom: 1.5rem;
-        }
-
-        .instructors-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Update the .instructor img rule so all images are a uniform size */
-        .instructor img {
-            width: 150px; /* fixed width */
-            height: 150px; /* fixed height to make them square */
-            object-fit: cover; /* crop any overflow instead of stretching */
-            border-radius: 8px; /* keep the corners rounded */
-            margin-bottom: 1rem;
-        }
-
-        .instructor h3 {
-            margin: 0.5rem 0;
-            color: #111;
-        }
-
-        .instructor p {
-            margin: 0.25rem 0;
-            color: #666;
-        }
-
-        .course-meta {
-            display: flex;
-            gap: 1rem;
-            color: #666;
-            align-items: center;
-        }
-
-        .course-meta i {
-            margin-right: 0.5rem;
-        }
-
-        ul, ol {
-            margin: 1rem 0;
-            padding-left: 2rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-        }
-
-        .card-title {
-            display: flex;
-            align-items: center;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #111;
-        }
-
-        .card-title i {
-            margin-right: 0.5rem;
-        }
-
-        .news-list {
-            list-style: none;
-            padding: 0;
-            margin: 1.5rem 0;
-        }
-
-        .news-list li {
-            margin-bottom: 1.5rem;
-        }
-
-        .news-list a {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 1rem;
-            text-decoration: none;
-            color: inherit;
-            padding: 1rem;
-            border-radius: 6px;
-            transition: background-color 0.2s;
-            align-items: start;
-        }
-
-        .news-list a:hover {
-            background-color: #f6f8fa;
-        }
-
-        .news-date {
-            color: #666;
-            font-size: 0.9rem;
-            grid-column: 1;
-        }
-
-        .news-title {
-            font-weight: 500;
-            color: #0366d6;
-            grid-column: 2;
-        }
-
-        .news-source {
-            color: #666;
-            font-size: 0.9rem;
-            grid-column: 2;
-        }
-
-        .link-icon {
-            font-size: 0.8rem;
-            color: #666;
-            grid-column: 3;
-            grid-row: 1;
-            margin-top: 0.3rem;
-        }
-    </style>
-
-
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Columbia University",
-        "item": "https://www.columbia.edu"
-    },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Political Science",
-        "item": "https://polisci.columbia.edu"
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Persuasion at Scale",
-        "item": "https://persuasion-at-scale.github.io/index.html"
-    }]
-}
-</script>
-
-
-
-
-<script type="application/ld+json">
-{
-  "@type": "CourseInstance",
-  "courseMode": "onsite",
-  "location": {
-    "@type": "Place",
-    "name": "313 Fayerweather",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "New York",
-      "addressRegion": "NY"
+  <style>
+    :root {
+      --paper: #f4efe6;
+      --paper-2: #ebe4d6;
+      --ink: #14120f;
+      --ink-2: #4a453c;
+      --ink-3: #7a7365;
+      --rule: #cfc6b4;
+      --red: #c8321f;
+      --red-2: #a5271a;
+      --gold: #b8892b;
+      --card: #fbf8f2;
+      --shadow: 0 1px 0 rgba(20,18,15,.06), 0 12px 30px -18px rgba(20,18,15,.35);
+      --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+      --sans: "IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
+      --max: 1120px;
     }
-  },
-  "instructor": [
-    {
-      "@type": "Person",
-      "name": "Eunji Kim",
-      "jobTitle": "Assistant Professor of Political Science",
-      "url": "https://www.eunjikim.pub/"
-    },
-    {
-      "@type": "Person",
-      "name": "Chris Wiggins",
-      "jobTitle": "Associate Professor of Applied Mathematics",
-      "url": "https://www.columbia.edu/~chw2/"
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #15130f;
+        --paper-2: #1d1a15;
+        --ink: #f1ebdf;
+        --ink-2: #c9c1b1;
+        --ink-3: #8f877a;
+        --rule: #3a352c;
+        --red: #ff6a4d;
+        --red-2: #ff8b73;
+        --gold: #d9a94a;
+        --card: #1d1a15;
+        --shadow: 0 1px 0 rgba(0,0,0,.4), 0 12px 30px -18px rgba(0,0,0,.8);
+      }
     }
-  ]
-}
-</script>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      opacity: .35;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .18 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+    a { color: var(--red); text-decoration: none; text-decoration-color: color-mix(in srgb, var(--red) 40%, transparent); text-underline-offset: 3px; }
+    a:hover { text-decoration: underline; color: var(--red-2); }
+    ::selection { background: var(--red); color: var(--paper); }
 
-<!-- 🔽 Add this right below -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Course",
-  "name": "Persuasion at Scale",
-  "description": "Columbia University course blending political science and data science to study persuasion through experiments, machine learning, and causal inference.",
-  "provider": {
-    "@type": "Organization",
-    "name": "Columbia University",
-    "sameAs": "https://www.columbia.edu"
-  }
-}
-</script>
+    .wrap { position: relative; z-index: 1; max-width: var(--max); margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
 
-<link rel="canonical" href="https://persuasion-at-scale.github.io/index.html">
+    .masthead {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 22px 0 14px; border-bottom: 2px solid var(--ink);
+      font-family: var(--mono); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2);
+    }
+    .masthead a { color: inherit; }
+    .masthead nav a { margin-left: 18px; }
+    @media (max-width: 720px) { .masthead nav { display: none; } }
 
+    .hero { padding: clamp(40px, 8vw, 96px) 0 clamp(36px, 6vw, 72px); position: relative; overflow: hidden; }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 300; font-variation-settings: "opsz" 144, "SOFT" 30;
+      font-size: clamp(56px, 11vw, 148px); line-height: .9; letter-spacing: -.035em; margin: 0;
+      max-width: 12ch;
+    }
+    .hero h1 em { font-style: italic; font-weight: 500; color: var(--red); }
+    .hero .dek {
+      font-family: var(--serif); font-size: clamp(20px, 2.4vw, 28px); line-height: 1.3; font-weight: 400;
+      max-width: 34ch; margin: 28px 0 0; color: var(--ink-2);
+    }
+    .hero .meta {
+      display: flex; flex-wrap: wrap; gap: 10px 26px; margin-top: 34px;
+      font-family: var(--mono); font-size: 13px; letter-spacing: .04em; color: var(--ink-2);
+    }
+    .hero .meta span::before { content: "\2014\00a0"; color: var(--red); }
+    .stamp {
+      position: absolute; right: 0; top: clamp(30px, 6vw, 70px); transform: rotate(8deg);
+      border: 3px solid var(--red); color: var(--red); border-radius: 6px; padding: 8px 14px;
+      font-family: var(--mono); font-size: 13px; letter-spacing: .18em; text-transform: uppercase; line-height: 1.25;
+      opacity: .85; mix-blend-mode: multiply; text-align: center;
+    }
+    @media (prefers-color-scheme: dark) { .stamp { mix-blend-mode: screen; } }
+    @media (max-width: 720px) { .stamp { position: static; display: inline-block; margin-top: 26px; transform: rotate(-3deg); } }
 
+    section { padding: clamp(36px, 6vw, 64px) 0; border-top: 1px solid var(--rule); }
+    .sec-head { display: grid; grid-template-columns: 1fr 3fr; gap: 24px; align-items: end; margin-bottom: 28px; }
+    .sec-head h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 4vw, 44px); letter-spacing: -.02em; line-height: 1; margin: 0; }
+    .sec-head .kicker { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
+    .sec-head p { margin: 0; color: var(--ink-2); max-width: 60ch; }
+    @media (max-width: 720px) { .sec-head { grid-template-columns: 1fr; gap: 10px; } }
+
+    .prose p { max-width: 68ch; margin: 0 0 1em; }
+    .lede { font-family: var(--serif); font-size: 1.25rem; line-height: 1.45; }
+
+    .ledger { list-style: none; margin: 0; padding: 0; counter-reset: m; border-top: 1px solid var(--rule); }
+    .ledger li { counter-increment: m; display: grid; grid-template-columns: 64px 1fr; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+    .ledger li::before { content: counter(m, decimal-leading-zero); font-family: var(--mono); color: var(--red); font-size: 14px; }
+    .ledger b { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; display: block; }
+    .ledger span { color: var(--ink-2); }
+
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 28px; }
+    .facts div { background: var(--card); padding: 16px 18px; }
+    .facts dt { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 6px; }
+    .facts dd { margin: 0; font-family: var(--serif); font-size: 1.15rem; }
+    @media (max-width: 720px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+
+    .people { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 28px; }
+    .person { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: center; }
+    .person img { width: 96px; height: 96px; object-fit: cover; border-radius: 50%; filter: grayscale(1) contrast(1.05); transition: filter .35s ease, transform .35s ease; box-shadow: var(--shadow); }
+    .person:hover img { filter: none; transform: rotate(-2deg) scale(1.03); }
+    .person h3 { font-family: var(--serif); font-weight: 500; font-size: 1.35rem; margin: 0 0 2px; letter-spacing: -.01em; }
+    .person p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+    .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 8px; }
+    .team .person { grid-template-columns: 72px 1fr; gap: 14px; }
+    .team .person img { width: 72px; height: 72px; }
+    .team .person h3 { font-size: 1.15rem; }
+    .team .person small { color: var(--ink-3); font-size: .85rem; }
+    .alumni { margin-top: 28px; color: var(--ink-2); font-size: .95rem; max-width: 68ch; }
+
+    .req { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); max-width: 820px; }
+    .req li { background: var(--card); padding: 18px; }
+    .req b { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; display: block; }
+    .req span { color: var(--ink-2); font-size: .93rem; }
+    @media (max-width: 720px) { .req { grid-template-columns: 1fr; } }
+
+    .rows { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+    .rows li { border-bottom: 1px solid var(--rule); }
+    .rows a { display: grid; grid-template-columns: 110px 1fr auto; gap: 18px; padding: 14px 6px; color: inherit; align-items: baseline; transition: background .2s, padding-left .2s; }
+    .rows a:hover { background: var(--card); padding-left: 12px; text-decoration: none; }
+    .rows a:hover .t { color: var(--red); }
+    .rows .d { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); }
+    .rows .t { font-family: var(--serif); font-weight: 500; font-size: 1.1rem; display: block; }
+    .rows .s { color: var(--ink-2); font-size: .93rem; display: block; }
+    .rows .go { font-family: var(--mono); font-size: 12px; color: var(--ink-3); letter-spacing: .08em; }
+    @media (max-width: 720px) { .rows a { grid-template-columns: 1fr; gap: 4px; } .rows .go { display: none; } }
+
+    .links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .links a { border: 1.5px solid var(--ink); border-radius: 999px; padding: 8px 16px; color: var(--ink); font-family: var(--mono); font-size: 13px; letter-spacing: .04em; transition: background .2s, color .2s, transform .2s; }
+    .links a:hover { background: var(--ink); color: var(--paper); text-decoration: none; transform: translateY(-1px); }
+
+    footer { border-top: 2px solid var(--ink); margin-top: 40px; padding: 28px 0 60px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); letter-spacing: .04em; }
+    footer a { color: var(--ink-2); }
+
+    .rv { opacity: 0; transform: translateY(14px); animation: rv .8s cubic-bezier(.2,.8,.2,1) forwards; }
+    .rv:nth-child(2) { animation-delay: .08s; } .rv:nth-child(3) { animation-delay: .16s; } .rv:nth-child(4) { animation-delay: .24s; }
+    @keyframes rv { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .rv { animation: none; opacity: 1; transform: none; } .person img, .rows a, .links a { transition: none; } }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <h1>The math you will use</h1>
-        <h2>Persuasion at Scale (PSAM UN3707): what the course actually asks of you, and how to get ready</h2>
-        <div class="course-meta">
-            <span><i class="far fa-calendar"></i>Spring 2027</span>
-        </div>
-        <p><a href="index.html">Back to the course page</a></p>
-    </header>
+<div class="wrap">
 
-    <div class="card">
-        <div class="card-title">
-            <i class="fas fa-book"></i>
-            <h2>Why this page exists</h2>
-        </div>
-        <p>This is a methods course. Every week you will take a real dataset and answer a question about
-        persuasion with it: did the ad work, did the algorithm change what people saw, which message should
-        the campaign send next. Answering those questions takes some mathematics and some programming. This
-        page says which, at the level the course uses them, so that nobody is surprised in week three and
-        nobody who would enjoy the course stays away because they assumed it was harder or softer than it is.</p>
-        <p>Two audiences read this page. If you are a political science, economics, or other social science
-        major, read it as a list of what to brush up on. If you are an applied math, statistics, computer
-        science, or engineering major, read it as a list of what you will get to use on problems you have
-        not seen before.</p>
+  <div class="masthead">
+    <a href="https://www.columbia.edu">Columbia University</a>
+    <nav aria-label="Sections">
+      <a href="index.html">Course page</a>
+      <a href="#use">What you will use</a>
+      <a href="#not">What you will not need</a>
+      <a href="#ready">How to get ready</a>
+      <a href="#quant">For quant majors</a>
+    </nav>
+  </div>
+
+  <header class="hero">
+    <div class="stamp rv">Spring 2027</div>
+    <h1 class="rv">The math <em>you will</em> use</h1>
+    <p class="dek rv">What Persuasion at Scale actually asks of you, at the level it asks it, and how to get ready before the first class.</p>
+    <div class="meta rv">
+      <span>PSAM UN3707</span>
+      <span><a href="index.html">Back to the course page</a></span>
+      <span><a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">Syllabus</a></span>
     </div>
+  </header>
 
-    <div class="card">
-        <div class="card-title">
-            <i class="fas fa-square-root-alt"></i>
-            <h2>What you will use</h2>
-        </div>
-        <h3>Probability and statistics</h3>
-        <ul>
-            <li>Expectation, variance, and conditional probability, used constantly and never derived from scratch.</li>
-            <li>Reading a regression table: what a coefficient, a standard error, a confidence interval, and a p-value each tell you, and what they do not.</li>
-            <li>Regression with an interaction term, which is how we ask whether a message works differently for different people.</li>
-        </ul>
-        <h3>Causal inference</h3>
-        <ul>
-            <li>Potential outcomes: the difference between what happened and what we <em>made</em> happen.</li>
-            <li>Randomized experiments and why randomization licenses a causal claim.</li>
-            <li>Natural experiments: difference in differences, and instrumental variables as two-stage least squares, including what a weak instrument is and how to tell.</li>
-        </ul>
-        <h3>Optimization and learning</h3>
-        <ul>
-            <li>Multi-armed bandits: epsilon-greedy, upper confidence bound, and Thompson sampling, as the loop that ad platforms and campaigns actually run.</li>
-            <li>Contextual bandits: the same loop when the system knows something about the person.</li>
-            <li>Recommender systems: vectors, dot products, and matrix factorization, which is the small amount of linear algebra the course needs.</li>
-            <li>Large language models as persuaders: how researchers post-train and scale models for persuasion, and how to read the effect sizes from those experiments.</li>
-        </ul>
-        <h3>Programming</h3>
-        <ul>
-            <li>Python, in Google Colab, so there is nothing to install.</li>
-            <li>pandas for tables, numpy for arithmetic, matplotlib for plots.</li>
-            <li>Every lecture comes with a notebook that already runs. Your job is to change a line, rerun it, and say what changed and why.</li>
-        </ul>
+  <section id="why">
+    <div class="sec-head">
+      <div><div class="kicker">Why this page</div><h2>So nobody is surprised in week three</h2></div>
+      <p>A methods course, taught on real data, needs some mathematics and some programming. This page says which.</p>
     </div>
-
-    <div class="card">
-        <div class="card-title">
-            <i class="fas fa-ban"></i>
-            <h2>What you will not need</h2>
-        </div>
-        <ul>
-            <li>Proofs. You will read formulas with sums, logarithms, and square roots, and you will use them; you will not be asked to prove theorems.</li>
-            <li>Prior coursework in machine learning or causal inference. The course builds each method from an example before naming it.</li>
-            <li>Prior Python. The first notebooks are the on-ramp, and the teaching assistants hold office hours for exactly this.</li>
-        </ul>
-        <p>Assessment is problem sets, a midterm, and a final, graded on whether you can run a method and
-        interpret the result, in that order. Details, dates, and grading weights are in the
-        <a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">syllabus</a>.</p>
+    <div class="prose">
+      <p class="lede">Every week you take a real dataset and answer a question about persuasion with it: did the ad work, did the algorithm change what people saw, which message should the campaign send next. Answering those questions takes tools, and the tools are listed below at the level the course uses them.</p>
+      <p>Two audiences read this page. If you are a political science, economics, or other social science major, read it as a list of what to brush up on. If you are an applied math, statistics, computer science, or engineering major, read it as a list of what you will get to use on problems you have not seen before.</p>
     </div>
+  </section>
 
-    <div class="card">
-        <div class="card-title">
-            <i class="fas fa-running"></i>
-            <h2>How to get ready</h2>
-        </div>
-        <ol>
-            <li>Open any notebook linked from the <a href="index.html">course page</a>, run every cell, and read the output. If you can do that, you can do the homework.</li>
-            <li>If regression is new to you: be able to say what a slope and an intercept are, and what a standard error measures. One evening with any introductory statistics text covers it.</li>
-            <li>If Python is new to you: in the same notebook, change one number in one cell, rerun, and find what moved in the output. That is most of what the course asks of your programming.</li>
-            <li>If probability is rusty: know what an expected value is and why averaging over more samples gives a tighter estimate. The bandit unit rests on that one idea.</li>
-        </ol>
+  <section id="use">
+    <div class="sec-head">
+      <div><div class="kicker">What you will use</div><h2>Four kinds of tools</h2></div>
+      <p>Introduced from an example before being named, and used every week after that.</p>
     </div>
+    <ol class="ledger" aria-label="Tools">
+      <li><div><b>Probability and statistics</b><span>Expectation, variance, and conditional probability, used constantly and never derived from scratch. Reading a regression table: what a coefficient, a standard error, a confidence interval, and a p-value each tell you, and what they do not. Regression with an interaction term, which is how we ask whether a message works differently for different people.</span></div></li>
+      <li><div><b>Causal inference</b><span>Potential outcomes: the difference between what happened and what we made happen. Randomized experiments and why randomization licenses a causal claim. Natural experiments: difference in differences, and instrumental variables as two-stage least squares, including what a weak instrument is and how to tell.</span></div></li>
+      <li><div><b>Optimization and learning</b><span>Multi-armed bandits (epsilon-greedy, upper confidence bound, Thompson sampling) as the loop that ad platforms and campaigns actually run. Contextual bandits, the same loop when the system knows something about the person. Recommender systems: vectors, dot products, and matrix factorization, which is the small amount of linear algebra the course needs. Large language models as persuaders: how researchers post-train and scale models for persuasion, and how to read the effect sizes from those experiments.</span></div></li>
+      <li><div><b>Programming</b><span>Python, in Google Colab, so there is nothing to install. pandas for tables, numpy for arithmetic, matplotlib for plots. Every lecture comes with a notebook that already runs. Your job is to change a line, rerun it, and say what changed and why.</span></div></li>
+    </ol>
+  </section>
 
-    <div class="card">
-        <div class="card-title">
-            <i class="fas fa-flask"></i>
-            <h2>For applied math, statistics, and computer science majors</h2>
-        </div>
-        <p>The methods above are introduced from examples, but the examples are real and the questions are
-        open. Instrumental variables is an identification problem. Bandits are online learning with a regret
-        bound you can check against the simulation. Recommender systems are matrix factorization on a
-        dataset that shaped what a hundred million people watched. The closing unit reads the 2024 to 2026
-        experiments in which researchers trained language models to persuade and measured how persuasion
-        scales with model size and post-training, and asks what the next experiment should be.</p>
-        <p>The course is co-listed under Applied Mathematics. Applied math majors: ask your adviser about
-        counting it as a technical elective.</p>
+  <section id="not">
+    <div class="sec-head">
+      <div><div class="kicker">What you will not need</div><h2>Three things people assume</h2></div>
+      <p>Assessment is problem sets plus an in-class midterm and final, graded on whether you can run a method and interpret the result, in that order. Details and weights are in the <a href="https://docs.google.com/document/d/1h442-b7Y8gTBbpbwfRW2zpKxNVfNAeM9ZUFqnYQFdiw/edit?tab=t.0">syllabus</a>.</p>
     </div>
+    <ul class="req">
+      <li><b>Proofs</b><span>You will read formulas with sums, logarithms, and square roots, and you will use them; you will not be asked to prove theorems.</span></li>
+      <li><b>Prior coursework in machine learning or causal inference</b><span>The course builds each method from an example before naming it.</span></li>
+      <li><b>Prior Python</b><span>The first notebooks are the on-ramp, and the teaching assistants hold office hours for exactly this.</span></li>
+    </ul>
+  </section>
 
-    <footer style="text-align: center; margin-top: 3rem; color: #666;">
-        <a href="index.html">Persuasion at Scale</a> |
-        <a href="https://polisci.columbia.edu">Columbia Political Science</a> |
-        <a href="https://datascience.columbia.edu/">Columbia Data Science</a>
-    </footer>
+  <section id="ready">
+    <div class="sec-head">
+      <div><div class="kicker">How to get ready</div><h2>Four things to do before January</h2></div>
+      <p>None takes more than an evening.</p>
+    </div>
+    <ol class="ledger" aria-label="Preparation">
+      <li><div><b>Run a notebook</b><span>Open any notebook linked from the <a href="index.html#notebooks">course page</a>, run every cell, and read the output. If you can do that, you can do the homework.</span></div></li>
+      <li><div><b>If regression is new</b><span>Be able to say what a slope and an intercept are, and what a standard error measures. One evening with any introductory statistics text covers it.</span></div></li>
+      <li><div><b>If Python is new</b><span>In the same notebook, change one number in one cell, rerun, and find what changed in the output. That is most of what the course asks of your programming.</span></div></li>
+      <li><div><b>If probability is rusty</b><span>Know what an expected value is and why averaging over more samples gives a tighter estimate. The bandit unit rests on that one idea.</span></div></li>
+    </ol>
+  </section>
+
+  <section id="quant">
+    <div class="sec-head">
+      <div><div class="kicker">For applied math, statistics, and CS majors</div><h2>Where it gets technical</h2></div>
+      <p>The methods are introduced from examples, but the examples are real and the questions are open.</p>
+    </div>
+    <div class="prose">
+      <p>Instrumental variables is an identification problem. Bandits are online learning with a regret bound you can check against the simulation. Recommender systems are matrix factorization on a dataset that shaped what a hundred million people watched. The closing unit reads the 2024 to 2026 experiments in which researchers trained language models to persuade and measured how persuasion scales with model size and post-training, and asks what the next experiment should be.</p>
+      <p>The course is co-listed under Applied Mathematics. Applied math majors: ask your adviser about counting it as a technical elective.</p>
+    </div>
+  </section>
+
+  <footer>
+    <span><a href="index.html">Persuasion at Scale</a>, Columbia University</span>
+    <span><a href="https://www.columbia.edu/~chw2/">Chris Wiggins</a></span>
+  </footer>
+</div>
 
 </body>
 </html>

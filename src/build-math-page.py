@@ -29,10 +29,17 @@ head = re.sub(
     '<meta name="description" content="What mathematics and programming Persuasion at Scale (PSAM UN3707) actually uses, and how to get ready before the first class."',
     head,
 )
-head = head.replace(
+for old in (
     'content="https://persuasion-at-scale.github.io/index.html"',
-    'content="https://persuasion-at-scale.github.io/math.html"',
+    'content="https://persuasion-at-scale.github.io/"',
+):
+    head = head.replace(old, 'content="https://persuasion-at-scale.github.io/math.html"')
+head = head.replace(
+    '<link rel="canonical" href="https://persuasion-at-scale.github.io/">',
+    '<link rel="canonical" href="https://persuasion-at-scale.github.io/math.html">',
 )
+# The main page's Course structured data does not describe this page; drop it.
+head = re.sub(r'<script type="application/ld\+json">.*?</script>\s*', "", head, flags=re.S)
 
 out = head + "\n<body>\n" + body + "\n</body>\n</html>\n"
 (ROOT / "math.html").write_text(out, encoding="utf-8")
